@@ -1,0 +1,41 @@
+.header {
+  height: 3rem;
+  background-color: #009384;
+  color: white;
+}
+
+.header-label {
+  padding: 0.8rem;
+  font-weight: bold;
+}
+
+.tile-container {
+  padding: 2rem;
+  display: flex;
+}
+
+.tile {
+  width: 25%;
+  border: .0625rem solid #e0e0e0;
+  min-height: 10rem;
+  border-radius: 1rem;
+}
+.tile-margin {
+  margin-right: 2rem;
+}
+
+.item-chart-container {
+  padding: 2rem;
+  display: flex;
+}
+
+.item-chart {
+  width: 50%;
+  border: .0625rem solid #e0e0e0;
+  min-height: 600px;
+  border-radius: .5rem;
+}
+
+.item-chart-left {
+  margin-right: 2rem;
+}
