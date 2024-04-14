@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@carbon/charts": "^1.15.5",
+    "@carbon/charts-react": "^1.15.6",
     "@carbon/react": "^1.54.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

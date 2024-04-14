@@ -1,4 +1,4 @@
-.header {
+.metrics-header {
   height: 3rem;
   background-color: #009384;
   color: white;
@@ -19,7 +19,9 @@
   border: .0625rem solid #e0e0e0;
   min-height: 10rem;
   border-radius: 1rem;
+  background-color: #ffff;
 }
+
 .tile-margin {
   margin-right: 2rem;
 }
@@ -34,8 +36,50 @@
   border: .0625rem solid #e0e0e0;
   min-height: 600px;
   border-radius: .5rem;
+  background-color: #ffff;
+  padding: 1rem;
 }
 
 .item-chart-left {
   margin-right: 2rem;
+}
+
+.metrics-body {
+  background-color: #e0e0e08a;
+}
+
+.footer {
+  text-align: center;
+  font-family: serif;
+  border-top: solid 1px #009384;
+  padding: .5rem;
+}
+
+.rights-panel {
+  margin-bottom: .3rem;
+}
+
+.tile-header {
+  padding: 1rem;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.tile-icon {
+  color: #009d9a;
+}
+
+.emr-details-table {
+  padding: 1rem 0 0 1rem;
+}
+
+.tile-items-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tile-item-value {
+  padding-top: 2.8rem;
+  font-size: 25px;
 }
