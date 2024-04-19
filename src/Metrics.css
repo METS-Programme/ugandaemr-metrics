@@ -83,3 +83,34 @@
   padding-top: 2.8rem;
   font-size: 25px;
 }
+
+.emr-details-table td {
+  font-size: 15px;
+  font-family: sans-serif;
+  padding-bottom: 6px;
+}
+
+.emr-version {
+  padding-left: 5px;
+
+  svg {
+    margin: 0 0 -0.2rem 0;
+    color: #009d9a;
+  }
+}
+
+.arrow-icon {
+  fill: #009d9a !important;
+  margin-left: .2rem;
+  margin-top: .1rem;
+}
+
+.tile-bottom-style {
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-button {
+  margin-top: 1.8rem !important;
+  color: #009d9a !important;
+}

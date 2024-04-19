@@ -34,7 +34,7 @@ export const DataTableComponent = () => {
     },
     {
       id: '4',
-      facility: 'Bandi HC',
+      facility: 'Banda HCIII',
       served: 30,
       records: 50,
       status: 'Active',
@@ -42,6 +42,13 @@ export const DataTableComponent = () => {
     {
       id: '5',
       facility: 'Kisenyi HCIV',
+      served: 89,
+      records:145,
+      status: 'Active',
+    },
+    {
+      id: '6',
+      facility: 'Masaka REGIONAL REF Hospital',
       served: 89,
       records:145,
       status: 'Active',

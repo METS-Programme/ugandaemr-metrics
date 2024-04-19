@@ -6,12 +6,13 @@ import { StackedBarChart } from "@carbon/charts-react";
 import {  data, options } from "./mock.data";
 import "@carbon/charts/styles.css";
 import {DataTableComponent} from "./components/data-table.component";
+import ViewButton from "./components/view-button";
 
 const Metrics = () => {
     return (
         <>
             <header className="metrics-header">
-                <div className="header-label"> UgandaEMR Metrics</div>
+                <div className="header-label"> EMR Metrics</div>
             </header>
             <Content className="metrics-body">
               <div className="tile-container">
@@ -26,20 +27,13 @@ const Metrics = () => {
                     <table>
                       <tbody>
                       <tr>
-                        <td className="">Version:</td>
-                        {" "}
-                        <td className="">
-                          4.0.0-SNAPSHOT <CheckmarkOutline size={15}/>
-                        </td>
+                        <td>Version:</td>
+                        <td className="emr-version"> 4.0.0-SNAPSHOT <CheckmarkOutline size={15}/></td>
                       </tr>
                       <tr>
-                        <td className="">Tools:</td>
-                        {" "}
-                        <td className="">
-                          8
-                        </td>
+                        <td>Tools:</td>
+                        <td> 8 </td>
                       </tr>
-
                       </tbody>
                     </table>
                   </div>
@@ -50,7 +44,10 @@ const Metrics = () => {
                       <div className="tile-icon"><Store size={50}/></div>
                       <div> Health Facilities</div>
                     </div>
-                    <div className="tile-item-value"> 5</div>
+                    <div className="tile-bottom-style">
+                      <div className="tile-item-value"> 6</div>
+                      <ViewButton/>
+                    </div>
                   </div>
                 </div>
                 <div className="tile tile-margin">
@@ -60,7 +57,10 @@ const Metrics = () => {
                       </div>
                       <div>Patient Served</div>
                     </div>
-                    <div className="tile-item-value"> 300</div>
+                    <div className="tile-bottom-style">
+                      <div className="tile-item-value"> 300</div>
+                      <ViewButton/>
+                    </div>
                   </div>
                 </div>
                 <div className="tile">
@@ -69,14 +69,17 @@ const Metrics = () => {
                       <div className="tile-icon"><UserMultiple size={50}/></div>
                       <div> Data Entry Statistics</div>
                     </div>
-                    <div className="tile-item-value"> 280</div>
+                    <div className="tile-bottom-style">
+                      <div className="tile-item-value"> 280</div>
+                      <ViewButton/>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="item-chart-container">
                 <div className="item-chart item-chart-left">
-                  <DataTableComponent/>
+                <DataTableComponent/>
                 </div>
                 <div className="item-chart">
                   <StackedBarChart data={data} options={options}/>
