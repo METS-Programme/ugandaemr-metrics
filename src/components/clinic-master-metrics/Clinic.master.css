@@ -10,7 +10,7 @@
 }
 
 .tile-container {
-  padding: 2rem;
+  padding-top: 2rem;
   display: flex;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .item-chart-container {
-  padding: 2rem;
+  padding-top: 2rem;
   display: flex;
 }
 
@@ -113,4 +113,19 @@
 .view-button {
   margin-top: 1.8rem !important;
   color: #009d9a !important;
+}
+
+.switcher-container-width {
+  width: 48.8%;
+}
+
+.date-container-width {
+  width: 51.2%;
+}
+.switcher-date-container {
+  display: flex;
+}
+
+.date-input-container {
+  margin-top: 2.5rem
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Metrics from "./Metrics";
+import HomeComponent from "./home.component";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Metrics />
+    <HomeComponent />
   </React.StrictMode>
 );

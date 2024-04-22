@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Metrics.css";
+import "./ugemr-metrics/Metrics.css";
 import { ArrowRight } from "@carbon/react/icons"
 import {Button} from "@carbon/react";
 
