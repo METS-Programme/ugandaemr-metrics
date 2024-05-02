@@ -38,6 +38,10 @@
   border-radius: .5rem;
   background-color: #ffff;
   padding: 1rem;
+
+  .cds--cc--title p.title {
+    padding-bottom: 1rem;
+  }
 }
 
 .item-chart-left {
@@ -96,6 +100,15 @@
   svg {
     margin: 0 0 -0.2rem 0;
     color: #009d9a;
+  }
+}
+
+.non-functional-emr {
+  padding-left: 5px;
+
+  svg {
+    margin: 0 0 -0.2rem 0;
+    color: darkgray;
   }
 }
 

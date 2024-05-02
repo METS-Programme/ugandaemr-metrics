@@ -1,63 +1,92 @@
 export const rows = [
   {
-    id: '1',
-    facility: 'Hoima REGIONAL REF Hospital',
-    served: 203,
-    records: 302,
-    status: 'Active',
-  },
-  {
-    id: '2',
+    id: '20',
     facility: 'Kagadi Hospital',
-    served: 138,
-    records: 201,
-    status: 'Active',
+    triage: 138,
+    clinician: 201,
+    lab: 0,
+    pharmacy: 50,
   },
   {
-    id: '3',
+    id: '30',
     facility: 'Kyangwali HCIV',
-    served: 46,
-    records: 59,
-    status: 'Active',
+    triage: 46,
+    clinician: 59,
+    lab: 0,
+    pharmacy: 10,
   },
   {
-    id: '4',
+    id: '40',
     facility: 'Banda HCIII',
-    served: 30,
-    records: 50,
-    status: 'Active',
+    triage: 30,
+    clinician: 50,
+    lab: 0,
+    pharmacy: 50,
   },
   {
-    id: '5',
+    id: '50',
     facility: 'Kisenyi HCIV',
-    served: 89,
-    records:145,
-    status: 'Active',
+    triage: 89,
+    clinician:145,
+    lab: 100,
+    pharmacy: 150,
   },
   {
-    id: '6',
+    id: '60',
     facility: 'Masaka REGIONAL REF Hospital',
-    served: 89,
-    records:145,
-    status: 'Active',
+    triage: 89,
+    clinician:145,
+    lab: 0,
+    pharmacy: 0,
   },
 ];
 
-export const headers = [
+export const fourXheaders = [
   {
     key: 'facility',
     header: 'Facility',
   },
   {
-    key: 'served',
-    header: 'Patients Served',
+    key: 'triage',
+    header: 'Triage',
   },
   {
-    key: 'records',
-    header: 'Records Captured',
+    key: 'clinician',
+    header: 'Clinician',
   },
   {
-    key: 'status',
-    header: 'Status',
+    key: 'lab',
+    header: 'Lab',
+  },
+  {
+    key: 'pharmacy',
+    header: 'Pharmacy',
+  }
+];
+
+export const threeXHeaders = [
+  {
+    key: 'facility',
+    header: 'Facility',
+  },
+  {
+    key: 'version',
+    header: 'EMR Version',
+  },
+  {
+    key: 'triage',
+    header: 'Triage',
+  },
+  {
+    key: 'clinician',
+    header: 'Clinician',
+  },
+  {
+    key: 'lab',
+    header: 'Lab',
+  },
+  {
+    key: 'pharmacy',
+    header: 'Pharmacy',
   },
 ];

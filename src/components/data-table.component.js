@@ -9,6 +9,8 @@ import {
   TableCell,
 } from '@carbon/react';
 import '@carbon/styles/css/styles.css';
+import {CheckmarkOutline, Close} from "@carbon/react/icons";
+
 export const DataTableComponent = (props) => {
   const { rows, headers } = props;
   return (
@@ -29,7 +31,17 @@ export const DataTableComponent = (props) => {
               {rows.map((row) => (
                 <TableRow {...getRowProps({ row })}>
                   {row.cells.map((cell) => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
+                    <TableCell key={cell.id}>{ cell.value > 0 ? (
+                      <div className="emr-version">
+                        <CheckmarkOutline size={18}/>
+                      </div>
+
+                    ): cell.value === 0 ?  (
+                      <div className="non-functional-emr">
+                        <Close size={18}/>
+                      </div>
+                    ): cell.value
+                    }</TableCell>
                   ))}
                 </TableRow>
               ))}
