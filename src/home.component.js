@@ -23,7 +23,7 @@ const HomeComponent = () => {
   };
 
   const updateDashboardMetrics = () => {
-    console.log("Updating Dashboard EafyaMetrics")
+   fetchData();
   };
 
   const fetchData = async () => {
