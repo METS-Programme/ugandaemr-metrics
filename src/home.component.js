@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./components/ugemr-metrics/Metrics.css";
 import {Content, ContentSwitcher, Switch} from "@carbon/react";
 import "@carbon/charts/styles.css";
@@ -9,6 +9,7 @@ import ClinicMasterMetrics
 import EafyaMetrics from "./components/eafya-metrics/Eafya.metrics";
 
 const HomeComponent = () => {
+  const [data, setData] = useState([]);
   const currentDate = new Date();
   const startOfWeek = new Date(currentDate);
   startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
@@ -27,6 +28,23 @@ const HomeComponent = () => {
   const updateDashboardMetrics = () => {
     console.log("Updating Dashboard EafyaMetrics")
   };
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`https://ugisl.mets.or.ug/metrics?and=(daterun.gte.2024-05-02,daterun.lte.2024-05-02)`);
+      if (!response.ok) {
+        console.error('Network response was not ok');
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -59,7 +77,7 @@ const HomeComponent = () => {
             />
           </div>
         </div>
-        { switchName === "ugandaemr" && (<Metrics/>)}
+        { switchName === "ugandaemr" && (<Metrics metricsData={data} />)}
         { switchName === "clinicmaster" && (<ClinicMasterMetrics/>)}
         { switchName === "eafya" && (<EafyaMetrics/>)}
       </Content>

@@ -6,8 +6,45 @@ import {  data, options } from "../../mock.data";
 import "@carbon/charts/styles.css";
 import {DataTableComponent} from "../data-table.component";
 import ViewButton from "../view-button";
+import { headers } from "../../constants";
 
-const Metrics = () => {
+const Metrics = (props) => {
+  const { metricsData } = props;
+  const recordsCaptured = () => {
+    let count = 0;
+    metricsData?.forEach((record) => {
+      const recordCount = record?.value?.length;
+      const latestValue = recordCount > 1 ? recordCount - 1 : recordCount;
+        record?.value[latestValue]?.dataentry?.forEach((item) => {
+            count += item?.numberOfEntries;
+        });
+    });
+
+    return count;
+  }
+
+  const facilityDetails = () => {
+    const facility = [];
+    metricsData?.forEach((record, index) => {
+      let count = 0;
+      const recordCount = record?.value?.length;
+      const latestValue = recordCount > 1 ? recordCount - 1 : recordCount;
+      record?.value[latestValue]?.dataentry?.forEach((item) => {
+        count += item?.numberOfEntries;
+      });
+
+      facility.push({
+        id: `${index++}`,
+        facility: record?.facilityname,
+        served: count,
+        records: count,
+        status: 'Active',
+
+      })
+    });
+
+    return facility;
+  }
     return (
         <>
           <div className="tile-container">
@@ -23,7 +60,7 @@ const Metrics = () => {
                   <tbody>
                   <tr>
                     <td>Version:</td>
-                    <td className="emr-version"> 4.0.0-SNAPSHOT <CheckmarkOutline size={15}/></td>
+                    <td className="emr-version"> {metricsData?.length > 0 ? metricsData[0]?.emrversion : '4.0.0'} <CheckmarkOutline size={15}/></td>
                   </tr>
                   <tr>
                     <td>Tools:</td>
@@ -40,7 +77,7 @@ const Metrics = () => {
                   <div> Health Facilities</div>
                 </div>
                 <div className="tile-bottom-style">
-                  <div className="tile-item-value"> 6</div>
+                  <div className="tile-item-value"> {metricsData?.length }</div>
                   <ViewButton/>
                 </div>
               </div>
@@ -53,7 +90,7 @@ const Metrics = () => {
                   <div>Patient Served</div>
                 </div>
                 <div className="tile-bottom-style">
-                  <div className="tile-item-value"> 300</div>
+                  <div className="tile-item-value"> {recordsCaptured()} </div>
                   <ViewButton/>
                 </div>
               </div>
@@ -65,7 +102,7 @@ const Metrics = () => {
                   <div> Data Entry Statistics</div>
                 </div>
                 <div className="tile-bottom-style">
-                  <div className="tile-item-value"> 280</div>
+                  <div className="tile-item-value"> {recordsCaptured()} </div>
                   <ViewButton/>
                 </div>
               </div>
@@ -74,7 +111,10 @@ const Metrics = () => {
 
           <div className="item-chart-container">
             <div className="item-chart item-chart-left">
-            <DataTableComponent/>
+            <DataTableComponent
+             rows={facilityDetails()}
+             headers={headers}
+            />
             </div>
             <div className="item-chart">
               <StackedBarChart data={data} options={options}/>
