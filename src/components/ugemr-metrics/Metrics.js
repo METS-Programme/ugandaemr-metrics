@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./Metrics.css";
 import { CheckmarkOutline, Store, DevicesApps, GroupPresentation, UserMultiple } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
@@ -12,9 +12,7 @@ const Metrics = (props) => {
   const recordsCaptured = () => {
     let count = 0;
     metricsData?.forEach((record) => {
-      const recordCount = record?.value?.length;
-      const latestValue = recordCount > 1 ? recordCount - 1 : 0;
-        record?.value[latestValue]?.dataentry?.forEach((item) => {
+        record?.value?.dataentry?.forEach((item) => {
             count += item?.numberOfEntries;
         });
     });
@@ -27,9 +25,7 @@ const Metrics = (props) => {
     let count = 0;
     metricsData?.forEach((record, index) => {
       if (record?.emrversion !== "4.0.0-SNAPSHOT") {
-        const recordCount = record?.value?.length;
-        const latestValue = recordCount > 1 ? recordCount - 1 : 0;
-        const latestRecord = record?.value[latestValue]?.poc_service_metrics;
+        const latestRecord = record?.value?.poc_service_metrics;
         facility.push({
           id: `${index++}`,
           facility: record?.facilityname,
@@ -40,7 +36,7 @@ const Metrics = (props) => {
           pharmacy: latestRecord?.pharmacy,
           counselor:latestRecord?.counselor
         })
-        count += latestRecord?.triage;
+        count += latestRecord?.triage ?? 0;
       }
     });
 
@@ -54,9 +50,7 @@ const Metrics = (props) => {
     metricsData?.forEach((record, index) => {
       if (record?.emrversion === "4.0.0-SNAPSHOT") {
         let count = 0;
-        const recordCount = record?.value?.length;
-        const latestValue = recordCount > 1 ? recordCount - 1 : 0;
-        record?.value[latestValue]?.dataentry?.forEach((item) => {
+        record?.value?.dataentry?.forEach((item) => {
           count += item?.numberOfEntries;
         });
 
@@ -145,7 +139,7 @@ const Metrics = (props) => {
                   UgandaEMR+ ({dayjs(dates[0]).format("DD/MMM/YYYY")} - {dayjs(dates[1]).format("DD/MMM/YYYY")})
                 </p>
               </div>
-              <DataTableComponent rows={[...facilityDetailsPlus(), ...rows]} headers={fourXheaders} />
+              <DataTableComponent rows={facilityDetailsPlus()} headers={fourXheaders} />
             </div>
             <div className="item-chart">
               <div className="cds--cc--title">
