@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./components/ugemr-metrics/Metrics.css";
 import {Content, ContentSwitcher, Switch} from "@carbon/react";
 import "@carbon/charts/styles.css";
@@ -7,14 +7,12 @@ import {DateFilterInput} from "./components/date-picker/date-picker";
 import ClinicMasterMetrics
   from "./components/clinic-master-metrics/Clinic.master.metrics";
 import EafyaMetrics from "./components/eafya-metrics/Eafya.metrics";
+import dayjs from "dayjs";
 
 const HomeComponent = () => {
+  const [data, setData] = useState([]);
   const currentDate = new Date();
-  const startOfWeek = new Date(currentDate);
-  startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
-  const endOfWeek = new Date(currentDate);
-  endOfWeek.setDate(currentDate.getDate() + (6 - currentDate.getDay()));
-  const [dateArray, setDateArray] = useState([startOfWeek, endOfWeek]);
+  const [dateArray, setDateArray] = useState([currentDate, currentDate]);
   const [switchName, setSwitchName] = useState("ugandaemr");
   const handleSwitchChange = ({ name }) => {
     setSwitchName(name);
@@ -25,8 +23,27 @@ const HomeComponent = () => {
   };
 
   const updateDashboardMetrics = () => {
-    console.log("Updating Dashboard EafyaMetrics")
+   fetchData();
   };
+
+  const fetchData = async () => {
+    const from = dayjs(dateArray[0]).format("YYYY-MM-DD")
+    const to = dayjs(dateArray[1]).format("YYYY-MM-DD")
+    try {
+      const response = await fetch(`https://ugisl.mets.or.ug/metrics?and=(daterun.gte.${from},daterun.lte.${to})`);
+      if (!response.ok) {
+        console.error('Network response was not ok');
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -59,7 +76,7 @@ const HomeComponent = () => {
             />
           </div>
         </div>
-        { switchName === "ugandaemr" && (<Metrics/>)}
+        { switchName === "ugandaemr" && (<Metrics metricsData={data} dates={dateArray}/>)}
         { switchName === "clinicmaster" && (<ClinicMasterMetrics/>)}
         { switchName === "eafya" && (<EafyaMetrics/>)}
       </Content>
