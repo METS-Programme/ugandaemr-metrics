@@ -4,8 +4,13 @@ import { CheckmarkOutline, Store, DevicesApps, GroupPresentation, UserMultiple }
 import "@carbon/charts/styles.css";
 import {DataTableComponent} from "../data-table.component";
 import ViewButton from "../view-button";
-import {fourXheaders, threeXHeaders} from "../../constants";
+import {
+  donutEMRCoverageOptions, donutVLCoverageOptions,
+  fourXheaders,
+  threeXHeaders
+} from "../../constants";
 import dayjs from "dayjs";
+import {DonutChart} from "@carbon/charts-react";
 
 const Metrics = (props) => {
   const { metricsData, dates } = props;
@@ -143,33 +148,25 @@ const Metrics = (props) => {
             <DataTableComponent rows={facilityDetailsPlus()}
                                 headers={fourXheaders}/>
           </div>
-          <div className="item-chart">
-            <div className="cds--cc--title">
-              <p className="title" role="heading" aria-level="2">
-                UgandaEMR+ Coverage
-              </p>
+          <div className="item-chart switcher-date-container">
+            <div className="item-chart-donut item-chart-left">
+              <DonutChart
+                data={[{group: "UgandaEMR+", value: metricsData?.length ?? 0}, {
+                  group: "UgandaEMR",
+                  value: 1700 - (metricsData?.length ?? 0)
+                }]}
+                options={donutEMRCoverageOptions}
+              />
             </div>
-
-          </div>
-        </div>
-        <div className="item-chart-container">
-          <div className="item-chart item-chart-left">
-            <div className="cds--cc--title">
-              <p className="title" role="heading" aria-level="2">
-                UgandaEMR 3.x
-                ({dayjs(dates[0]).format("DD/MMM/YYYY")} - {dayjs(dates[1]).format("DD/MMM/YYYY")})
-              </p>
+            <div className="item-chart-donut">
+              <DonutChart
+                data={[{group: "No VL Exchange", value: 10}, {
+                  group: "VL Exchange",
+                  value: 5
+                }]}
+                options={donutVLCoverageOptions}
+              />
             </div>
-            <DataTableComponent rows={facilityDetails().facility}
-                                headers={threeXHeaders}/>
-          </div>
-          <div className="item-chart">
-            <div className="cds--cc--title">
-              <p className="title" role="heading" aria-level="2">
-                UgandaEMR 3.x
-              </p>
-            </div>
-
           </div>
         </div>
       </>

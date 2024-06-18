@@ -47,3 +47,30 @@ export const threeXHeaders = [
     header: 'Pharmacy',
   },
 ];
+
+export const donutEMRCoverageOptions = {
+  title: "UgandaEMR+ Coverage",
+  resizable: true,
+  donut: {
+    center: {
+      label: "Facilities",
+    },
+  },
+  height: "400px",
+};
+
+export const donutVLCoverageOptions = {
+  title: "Viral Load Coverage",
+  resizable: true,
+  donut: {
+    center: {
+      label: "Total Facilities",
+    },
+  },
+  color: {
+    pairing: {
+      option: 3
+    }
+  },
+  height: "400px",
+};
