@@ -28,6 +28,19 @@ const Metrics = (props) => {
     return count;
   }
 
+  const vlExchange = () => {
+    let count = 0;
+    metricsData?.forEach((record) => {
+      const vlSent = record?.value?.dataentry[0]?.['VL exchange send sample'] ?? 0
+      const vlReceived = record?.value?.dataentry[0]?.['VL exchange receive'] ?? 0
+      if (vlSent > 0 || vlReceived > 0) {
+        count += 1;
+      }
+    });
+
+    return count;
+  }
+
   const facilityDetails = () => {
     const facility = [];
     let count = 0;
@@ -64,7 +77,8 @@ const Metrics = (props) => {
           clinician: record?.value?.dataentry[0]?.['Clinician'] ?? 0,
           lab: record?.value?.dataentry[0]?.['Lab'] ?? 0,
           pharmacy: record?.value?.dataentry[0]?.['Pharmacy'] ?? 0,
-
+          vlSent: record?.value?.dataentry[0]?.['VL exchange send sample'] ?? 0,
+          vlReceived: record?.value?.dataentry[0]?.['VL exchange receive'] ?? 0
         })
       }
     });
@@ -160,9 +174,9 @@ const Metrics = (props) => {
             </div>
             <div className="item-chart-donut">
               <DonutChart
-                data={[{group: "No VL Exchange", value: 10}, {
+                data={[{group: "No VL Exchange", value: (1700 - vlExchange())}, {
                   group: "VL Exchange",
-                  value: 5
+                  value: vlExchange()
                 }]}
                 options={donutVLCoverageOptions}
               />

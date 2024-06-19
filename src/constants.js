@@ -18,6 +18,14 @@ export const fourXheaders = [
   {
     key: 'pharmacy',
     header: 'Pharmacy',
+  },
+  {
+    key: 'vlSent',
+    header: 'VL Sent',
+  },
+  {
+    key: 'vlReceived',
+    header: 'VL Results',
   }
 ];
 
