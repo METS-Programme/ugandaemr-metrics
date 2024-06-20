@@ -142,3 +142,11 @@
 .date-input-container {
   margin-top: 2.5rem
 }
+
+.item-chart-donut {
+  width: 48%;
+  min-height: 600px;
+  border-radius: .5rem;
+  background-color: #ffff;
+  padding: 1rem;
+}

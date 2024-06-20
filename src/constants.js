@@ -1,46 +1,3 @@
-export const rows = [
-  {
-    id: '20',
-    facility: 'Kagadi Hospital',
-    triage: 138,
-    clinician: 201,
-    lab: 0,
-    pharmacy: 50,
-  },
-  {
-    id: '30',
-    facility: 'Kyangwali HCIV',
-    triage: 46,
-    clinician: 59,
-    lab: 0,
-    pharmacy: 10,
-  },
-  {
-    id: '40',
-    facility: 'Banda HCIII',
-    triage: 30,
-    clinician: 50,
-    lab: 0,
-    pharmacy: 50,
-  },
-  {
-    id: '50',
-    facility: 'Kisenyi HCIV',
-    triage: 89,
-    clinician:145,
-    lab: 100,
-    pharmacy: 150,
-  },
-  {
-    id: '60',
-    facility: 'Masaka REGIONAL REF Hospital',
-    triage: 89,
-    clinician:145,
-    lab: 0,
-    pharmacy: 0,
-  },
-];
-
 export const fourXheaders = [
   {
     key: 'facility',
@@ -61,6 +18,14 @@ export const fourXheaders = [
   {
     key: 'pharmacy',
     header: 'Pharmacy',
+  },
+  {
+    key: 'vlSent',
+    header: 'VL Sent',
+  },
+  {
+    key: 'vlReceived',
+    header: 'VL Results',
   }
 ];
 
@@ -90,3 +55,30 @@ export const threeXHeaders = [
     header: 'Pharmacy',
   },
 ];
+
+export const donutEMRCoverageOptions = {
+  title: "UgandaEMR+ Coverage",
+  resizable: true,
+  donut: {
+    center: {
+      label: "Facilities",
+    },
+  },
+  height: "400px",
+};
+
+export const donutVLCoverageOptions = {
+  title: "Viral Load Coverage",
+  resizable: true,
+  donut: {
+    center: {
+      label: "Total Facilities",
+    },
+  },
+  color: {
+    pairing: {
+      option: 3
+    }
+  },
+  height: "400px",
+};
