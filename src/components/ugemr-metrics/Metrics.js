@@ -17,10 +17,10 @@ const Metrics = (props) => {
   const recordsCaptured = () => {
     let count = 0;
     metricsData?.forEach((record) => {
-      const triage = record?.value?.dataentry[0]?.['Triage'] ?? 0;
-      const clinician = record?.value?.dataentry[0]?.['Clinician'] ?? 0;
-      const lab = record?.value?.dataentry[0]?.['Lab'] ?? 0;
-      const pharmacy = record?.value?.dataentry[0]?.['Pharmacy'] ?? 0;
+      const triage = record?.value?.dataentry?.[0]?.['Triage'] ?? 0;
+      const clinician = record?.value?.dataentry?.[0]?.['Clinician'] ?? 0;
+      const lab = record?.value?.dataentry?.[0]?.['Lab'] ?? 0;
+      const pharmacy = record?.value?.dataentry?.[0]?.['Pharmacy'] ?? 0;
 
       count += (triage + clinician + lab + pharmacy);
     });
@@ -31,8 +31,8 @@ const Metrics = (props) => {
   const vlExchange = () => {
     let count = 0;
     metricsData?.forEach((record) => {
-      const vlSent = record?.value?.dataentry[0]?.['VL exchange send sample'] ?? 0
-      const vlReceived = record?.value?.dataentry[0]?.['VL exchange receive'] ?? 0
+      const vlSent = record?.value?.dataentry?.[0]?.['VL exchange send sample'] ?? 0
+      const vlReceived = record?.value?.dataentry?.[0]?.['VL exchange receive'] ?? 0
       if (vlSent > 0 || vlReceived > 0) {
         count += 1;
       }
@@ -73,12 +73,12 @@ const Metrics = (props) => {
         facility.push({
           id: `${index++}`,
           facility: record?.facilityname,
-          triage: record?.value?.dataentry[0]?.['Triage'] ?? 0,
-          clinician: record?.value?.dataentry[0]?.['Clinician'] ?? 0,
-          lab: record?.value?.dataentry[0]?.['Lab'] ?? 0,
-          pharmacy: record?.value?.dataentry[0]?.['Pharmacy'] ?? 0,
-          vlSent: record?.value?.dataentry[0]?.['VL exchange send sample'] ?? 0,
-          vlReceived: record?.value?.dataentry[0]?.['VL exchange receive'] ?? 0
+          triage: record?.value?.dataentry?.[0]?.['Triage'] ?? 0,
+          clinician: record?.value?.dataentry?.[0]?.['Clinician'] ?? 0,
+          lab: record?.value?.dataentry?.[0]?.['Lab'] ?? 0,
+          pharmacy: record?.value?.dataentry?.[0]?.['Pharmacy'] ?? 0,
+          vlSent: record?.value?.dataentry?.[0]?.['VL exchange send sample'] ?? 0,
+          vlReceived: record?.value?.dataentry?.[0]?.['VL exchange receive'] ?? 0
         })
       }
     });
