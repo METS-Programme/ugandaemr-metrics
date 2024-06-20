@@ -68,6 +68,7 @@ const Metrics = (props) => {
   }
   const facilityDetailsPlus = () => {
     const facility = [];
+    let count = 0;
     metricsData?.forEach((record, index) => {
       if (record?.emrversion === "4.0.0-SNAPSHOT") {
         facility.push({
@@ -80,10 +81,12 @@ const Metrics = (props) => {
           vlSent: record?.value?.dataentry?.[0]?.['VL exchange send sample'] ?? 0,
           vlReceived: record?.value?.dataentry?.[0]?.['VL exchange receive'] ?? 0
         })
+
+        count += 1;
       }
     });
 
-    return facility;
+    return { facility,count };
   }
     return (
       <>
@@ -118,7 +121,7 @@ const Metrics = (props) => {
                 <div> Health Facilities</div>
               </div>
               <div className="tile-bottom-style">
-                <div className="tile-item-value"> {metricsData?.length}</div>
+                <div className="tile-item-value"> {facilityDetailsPlus().count}</div>
                 <ViewButton/>
               </div>
             </div>
@@ -159,7 +162,7 @@ const Metrics = (props) => {
                 ({dayjs(dates[0]).format("DD/MMM/YYYY")} - {dayjs(dates[1]).format("DD/MMM/YYYY")})
               </p>
             </div>
-            <DataTableComponent rows={facilityDetailsPlus()}
+            <DataTableComponent rows={facilityDetailsPlus().facility}
                                 headers={fourXheaders}/>
           </div>
           <div className="item-chart switcher-date-container">
