@@ -168,9 +168,9 @@ const Metrics = (props) => {
           <div className="item-chart switcher-date-container">
             <div className="item-chart-donut item-chart-left">
               <DonutChart
-                data={[{group: "UgandaEMR+", value: metricsData?.length ?? 0}, {
+                data={[{group: "UgandaEMR+", value: facilityDetailsPlus().count ?? 0}, {
                   group: "UgandaEMR",
-                  value: 1700 - (metricsData?.length ?? 0)
+                  value: 1700 - (facilityDetailsPlus().count ?? 0)
                 }]}
                 options={donutEMRCoverageOptions}
               />
