@@ -1,18 +1,18 @@
 import React from 'react';
-import "./Metrics.css";
+import "./MetricsMMM.css";
 import { CheckmarkOutline, Store, DevicesApps, GroupPresentation, UserMultiple } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
-import {DataTableComponent} from "../data-table.component";
-import ViewButton from "../view-button";
+import {DataTableComponent} from "../../data-table/data-table.component";
+import ViewButton from "../../view-button";
 import {
   donutEMRCoverageOptions, donutVLCoverageOptions,
   fourXheaders,
   threeXHeaders
-} from "../../constants";
+} from "../../../constants";
 import dayjs from "dayjs";
 import {DonutChart} from "@carbon/charts-react";
 
-const Metrics = (props) => {
+const UgandaemrPOC = (props) => {
   const { metricsData, dates } = props;
   const recordsCaptured = () => {
     let count = 0;
@@ -190,4 +190,4 @@ const Metrics = (props) => {
     );
 };
 
-export default Metrics;
+export default UgandaemrPOC;

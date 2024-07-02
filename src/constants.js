@@ -56,6 +56,17 @@ export const threeXHeaders = [
   },
 ];
 
+export const facilityHeaders = [
+  {
+    key: 'no',
+    header: 'No',
+  },
+  {
+    key: 'facility',
+    header: 'Facility',
+  },
+];
+
 export const donutEMRCoverageOptions = {
   title: "UgandaEMR+ Coverage",
   resizable: true,
@@ -64,7 +75,7 @@ export const donutEMRCoverageOptions = {
       label: "Facilities",
     },
   },
-  height: "400px",
+  height: "450px",
 };
 
 export const donutVLCoverageOptions = {

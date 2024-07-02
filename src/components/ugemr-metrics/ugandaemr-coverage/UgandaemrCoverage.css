@@ -1,0 +1,159 @@
+.metrics-header {
+  height: 3rem;
+  background-color: #009384;
+  color: white;
+}
+
+.header-label {
+  padding: 0.8rem;
+  font-weight: bold;
+}
+
+.tile-container {
+  display: flex;
+}
+
+.tile {
+  width: 33.3%;
+  border: .0625rem solid #e0e0e0;
+  min-height: 10rem;
+  border-radius: 1rem;
+  background-color: #ffff;
+}
+
+.tile-margin {
+  margin-right: 1rem;
+}
+
+.item-chart-container {
+  padding-top: 1rem;
+  display: flex;
+}
+
+.item-chart {
+  width: 50%;
+  border: .0625rem solid #e0e0e0;
+  min-height: 600px;
+  border-radius: .5rem;
+  background-color: #ffff;
+  padding: 1rem;
+
+  .cds--cc--title p.title {
+    padding-bottom: 1rem;
+  }
+}
+
+.item-chart-left {
+  margin-right: 1rem;
+}
+
+.metrics-body {
+  background-color: #e0e0e08a;
+  min-height: calc(100vh - 54px);
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.rights-panel {
+  margin-bottom: .3rem;
+}
+
+.tile-header {
+  padding: 1rem;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.tile-icon {
+  color: #009d9a;
+}
+
+.emr-details-table {
+  padding: 1rem 0 0 1rem;
+}
+
+.tile-items-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tile-item-value {
+  padding-top: 2.8rem;
+  font-size: 25px;
+}
+
+.emr-details-table td {
+  font-size: 15px;
+  font-family: sans-serif;
+  padding-bottom: 6px;
+}
+
+.emr-version {
+  padding-left: 5px;
+
+  svg {
+    margin: 0 0 -0.2rem 0;
+    color: #009d9a;
+  }
+}
+
+.non-functional-emr {
+  padding-left: 5px;
+
+  svg {
+    margin: 0 0 -0.2rem 0;
+    color: darkgray;
+  }
+}
+
+.arrow-icon {
+  fill: #009d9a !important;
+  margin-left: .2rem;
+  margin-top: .1rem;
+}
+
+.tile-bottom-style {
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-button {
+  margin-top: 1.8rem !important;
+  color: #009d9a !important;
+}
+
+.switcher-container-width {
+  width: 48.8%;
+}
+
+.date-container-width {
+  width: 51.2%;
+}
+.switcher-date-container {
+  display: flex;
+}
+
+.date-input-container {
+  margin-top: 2.5rem
+}
+
+.item-chart-donut {
+  padding: 1rem;
+
+  svg {
+    margin-left: 8rem;
+  }
+}
+
+.section-wrapper {
+  margin-left: 15rem;
+}

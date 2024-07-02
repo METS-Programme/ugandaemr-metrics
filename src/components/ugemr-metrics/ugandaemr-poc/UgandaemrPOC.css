@@ -50,13 +50,17 @@
 
 .metrics-body {
   background-color: #e0e0e08a;
+  min-height: calc(100vh - 54px);
 }
 
 .footer {
+  background-color: #333;
+  color: white;
   text-align: center;
-  font-family: serif;
-  border-top: solid 1px #009384;
-  padding: .5rem;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 .rights-panel {
