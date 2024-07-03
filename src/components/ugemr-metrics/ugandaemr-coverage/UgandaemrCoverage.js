@@ -16,7 +16,7 @@ const UgandaemrCoverage = (props) => {
   const fetchData = async () => {
     const date = dayjs(new Date()).format("YYYY-MM-DD")
     try {
-      const response = await fetch(`https://ugisl.mets.or.ug/metrics?and=(daterun.lte.${date},emrversion.eq.4.0.0-SNAPSHOT)`);
+      const response = await fetch(`https://ugisl.mets.or.ug/stats?and=(emrversion.eq.4.0.0-SNAPSHOT)`);
       if (!response.ok) {
         console.error('Network response was not ok');
       }
@@ -27,32 +27,17 @@ const UgandaemrCoverage = (props) => {
     }
   };
 
-  const getUniqueContractCategory = (contractCategoryArray) => {
-    const uniqueContractCategoryMap = new Map();
-
-    contractCategoryArray?.forEach((contractCategory) => {
-      uniqueContractCategoryMap.set(contractCategory?.value?.metadata?.facility_id, contractCategory);
-    });
-
-    const newContractCategoryArray = Array.from(uniqueContractCategoryMap?.values());
-
-    return newContractCategoryArray;
-  };
-
   const facilityDetailsPlus = () => {
-    const facilityData = getUniqueContractCategory(data);
     const facility = [];
     let count = 0;
-    facilityData?.forEach((record, index) => {
-      if (record?.emrversion === "4.0.0-SNAPSHOT") {
-        facility.push({
-          id: `${index++}`,
-          no: `${index++}`,
-          facility: record?.facilityname
-        })
+    data?.forEach((record, index) => {
+      facility.push({
+        id: `${index++}`,
+        no: `${index++}`,
+        facility: record?.facilityname
+      });
 
-        count += 1;
-      }
+      count += 1;
     });
 
     return { facility,count };
