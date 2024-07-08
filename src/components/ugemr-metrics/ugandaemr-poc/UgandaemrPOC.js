@@ -3,7 +3,7 @@ import "./UgandaemrPOC.css";
 import { CheckmarkOutline, Store, DevicesApps, GroupPresentation, UserMultiple } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
 import { DataTableComponent } from "../../data-table/data-table.component";
-import ViewButton from "../../view-button";
+import ViewButton from "../../home/view-button";
 import { fourXheaders } from "../../../constants";
 import dayjs from "dayjs";
 import { DateFilterInput } from "../../date-picker/date-picker";

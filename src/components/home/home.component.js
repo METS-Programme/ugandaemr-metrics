@@ -5,9 +5,10 @@ import {
   SideNavItems, SideNavLink,
 } from "@carbon/react";
 import "@carbon/charts/styles.css";
+import './home.css';
 import {DataShare, Microscope, ShareKnowledge, Tour} from "@carbon/icons-react";
-import CoverageComponent from "./components/nav-Items/coverage";
-import PocComponent from "./components/nav-Items/poc";
+import CoverageComponent from "../nav-Items/coverage";
+import PocComponent from "../nav-Items/poc";
 
 const HomeComponent = () => {
   const [switchName, setSwitchName] = useState("ugandaemr");

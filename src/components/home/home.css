@@ -1,0 +1,25 @@
+.metrics-header {
+  height: 3rem;
+  background-color: #009384;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #ddd; /* Optional, for a visual separation */
+}
+
+.header-label {
+  padding: 0.8rem;
+  font-weight: bold;
+}
+
+.metrics-body {
+  background-color: #e0e0e08a;
+}
+
+.footer {
+  text-align: center;
+  font-family: serif;
+  border-top: solid 1px #009384;
+  padding: .5rem;
+}

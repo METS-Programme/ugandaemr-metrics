@@ -3,7 +3,7 @@ import "./UgandaemrCoverage.css";
 import { CheckmarkOutline, ScreenOff, DevicesApps, IbmCloudLogging } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
 import {DataTableComponent} from "../../data-table/data-table.component";
-import ViewButton from "../../view-button";
+import ViewButton from "../../home/view-button";
 import {
   donutEMRCoverageOptions, facilityHeaders,
   fourXheaders,
