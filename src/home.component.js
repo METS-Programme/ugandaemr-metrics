@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import {
   Content,
   SideNav,
@@ -7,24 +7,14 @@ import {
 import "@carbon/charts/styles.css";
 import {DataShare, Microscope, ShareKnowledge, Tour} from "@carbon/icons-react";
 import CoverageComponent from "./components/nav-Items/coverage";
+import PocComponent from "./components/nav-Items/poc";
 
 const HomeComponent = () => {
-  const [data, setData] = useState([]);
-  const currentDate = new Date();
-  const [dateArray, setDateArray] = useState([currentDate, currentDate]);
   const [switchName, setSwitchName] = useState("ugandaemr");
   const [navItem, setNavItem] = useState("coverage");
-  const handleSwitchChange = ({ name }) => {
-    setSwitchName(name);
-  }
-
-  const handleOnChangeRange = (dates) => {
-    setDateArray(dates);
-  };
 
   const handleOnClickItem = (navItem) => {
     setNavItem(navItem);
-    console.log(navItem);
   };
 
   return (
@@ -48,13 +38,14 @@ const HomeComponent = () => {
               Exchange </SideNavLink>
           </SideNavItems>
 
-          <footer className="footer">
-            <div className="rights-panel">© 2024 All rights reserved</div>
-            <div> Monitoring & Evaluation Technical Support (METS)</div>
-          </footer>
+          {/*<footer className="footer">*/}
+          {/*  <div className="rights-panel">© 2024 All rights reserved</div>*/}
+          {/*  <div> Monitoring & Evaluation Technical Support (METS)</div>*/}
+          {/*</footer>*/}
         </SideNav>
         <section className="section-wrapper">
           {navItem === "coverage" && (<CoverageComponent emr={switchName}/>)}
+          {navItem === "poc" && (<PocComponent emr={switchName}/>)}
         </section>
       </Content>
     </>

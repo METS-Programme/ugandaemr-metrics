@@ -49,8 +49,8 @@ const UgandaemrCoverage = (props) => {
 
     return (
       <>
-        <div className="tile-container">
-          <div className="tile tile-margin">
+        <div className="tile-container-ug-coverage">
+          <div className="tile-ug-coverage tile-margin-ug-coverage">
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><DevicesApps size={50}/></div>
@@ -73,7 +73,7 @@ const UgandaemrCoverage = (props) => {
               </table>
             </div>
           </div>
-          <div className="tile tile-margin">
+          <div className="tile-ug-coverage tile-margin-ug-coverage">
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><IbmCloudLogging size={50}/></div>
@@ -85,7 +85,7 @@ const UgandaemrCoverage = (props) => {
               </div>
             </div>
           </div>
-          <div className="tile">
+          <div className="tile-ug-coverage">
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><ScreenOff size={50}/>
@@ -108,7 +108,7 @@ const UgandaemrCoverage = (props) => {
               </p>
             </div>
             <DataTableComponent rows={facilityDetailsPlus().facility}
-                                headers={facilityHeaders} indicator={false}/>
+                                headers={facilityHeaders} indicator={false} showDownload={facilityDetailsPlus().facility.length > 0}/>
           </div>
           <div className="item-chart">
             <div className="item-chart-donut">

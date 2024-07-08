@@ -23,16 +23,16 @@
 }
 
 .tile-margin {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .item-chart-container {
-  padding-top: 2rem;
+  padding-top: 1rem;
   display: flex;
 }
 
 .item-chart {
-  width: 50%;
+  width: 100%;
   border: .0625rem solid #e0e0e0;
   min-height: 600px;
   border-radius: .5rem;
@@ -42,25 +42,6 @@
   .cds--cc--title p.title {
     padding-bottom: 1rem;
   }
-}
-
-.item-chart-left {
-  margin-right: 2rem;
-}
-
-.metrics-body {
-  background-color: #e0e0e08a;
-  min-height: calc(100vh - 54px);
-}
-
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
 }
 
 .rights-panel {
@@ -92,7 +73,7 @@
   font-size: 25px;
 }
 
-.emr-details-table td {
+.poc-details-table td {
   font-size: 15px;
   font-family: sans-serif;
   padding-bottom: 6px;
@@ -116,20 +97,9 @@
   }
 }
 
-.arrow-icon {
-  fill: #009d9a !important;
-  margin-left: .2rem;
-  margin-top: .1rem;
-}
-
 .tile-bottom-style {
   display: flex;
   justify-content: space-between;
-}
-
-.view-button {
-  margin-top: 1.8rem !important;
-  color: #009d9a !important;
 }
 
 .switcher-container-width {
@@ -147,10 +117,3 @@
   margin-top: 2.5rem
 }
 
-.item-chart-donut {
-  width: 48%;
-  min-height: 600px;
-  border-radius: .5rem;
-  background-color: #ffff;
-  padding: 1rem;
-}

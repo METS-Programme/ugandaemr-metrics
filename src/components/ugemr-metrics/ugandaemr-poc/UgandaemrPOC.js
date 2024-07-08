@@ -1,22 +1,43 @@
-import React from 'react';
-import "./MetricsMMM.css";
+import React, {useEffect, useState} from 'react';
+import "./UgandaemrPOC.css";
 import { CheckmarkOutline, Store, DevicesApps, GroupPresentation, UserMultiple } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
-import {DataTableComponent} from "../../data-table/data-table.component";
+import { DataTableComponent } from "../../data-table/data-table.component";
 import ViewButton from "../../view-button";
-import {
-  donutEMRCoverageOptions, donutVLCoverageOptions,
-  fourXheaders,
-  threeXHeaders
-} from "../../../constants";
+import { fourXheaders } from "../../../constants";
 import dayjs from "dayjs";
-import {DonutChart} from "@carbon/charts-react";
+import { DateFilterInput } from "../../date-picker/date-picker";
 
 const UgandaemrPOC = (props) => {
-  const { metricsData, dates } = props;
+  const [data, setData] = useState([]);
+  const currentDate = new Date();
+  const [dateArray, setDateArray] = useState([currentDate, currentDate]);
+  const handleOnChangeRange = (dates) => {
+    setDateArray(dates);
+  };
+
+  const updateDashboardMetrics = () => {
+    fetchData();
+  };
+
+  const fetchData = async () => {
+    const from = dayjs(dateArray[0]).format("YYYY-MM-DD")
+    const to = dayjs(dateArray[1]).format("YYYY-MM-DD")
+    try {
+      const response = await fetch(`https://ugisl.mets.or.ug/metrics?and=(daterun.gte.${from},daterun.lte.${to})`);
+      if (!response.ok) {
+        console.error('Network response was not ok');
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   const recordsCaptured = () => {
     let count = 0;
-    metricsData?.forEach((record) => {
+    data?.forEach((record) => {
       const triage = record?.value?.dataentry?.[0]?.['Triage'] ?? 0;
       const clinician = record?.value?.dataentry?.[0]?.['Clinician'] ?? 0;
       const lab = record?.value?.dataentry?.[0]?.['Lab'] ?? 0;
@@ -30,7 +51,7 @@ const UgandaemrPOC = (props) => {
 
   const vlExchange = () => {
     let count = 0;
-    metricsData?.forEach((record) => {
+    data?.forEach((record) => {
       const vlSent = record?.value?.dataentry?.[0]?.['VL exchange send sample'] ?? 0
       const vlReceived = record?.value?.dataentry?.[0]?.['VL exchange receive'] ?? 0
       if (vlSent > 0 || vlReceived > 0) {
@@ -44,7 +65,7 @@ const UgandaemrPOC = (props) => {
   const facilityDetails = () => {
     const facility = [];
     let count = 0;
-    metricsData?.forEach((record, index) => {
+    data?.forEach((record, index) => {
       if (record?.emrversion !== "4.0.0-SNAPSHOT") {
         const latestRecord = record?.value?.poc_service_metrics;
         facility.push({
@@ -69,7 +90,7 @@ const UgandaemrPOC = (props) => {
   const facilityDetailsPlus = () => {
     const facility = [];
     let count = 0;
-    metricsData?.forEach((record, index) => {
+    data?.forEach((record, index) => {
       if (record?.emrversion === "4.0.0-SNAPSHOT") {
         facility.push({
           id: `${index++}`,
@@ -88,14 +109,30 @@ const UgandaemrPOC = (props) => {
 
     return { facility,count };
   }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
     return (
       <>
-        <div className="tile-container">
+
+        <div className="switcher-date-container">
+          <div></div>
+          <div className="date-container-width date-input-container">
+            <DateFilterInput
+              handleOnChangeRange={handleOnChangeRange}
+              updateDashboard={updateDashboardMetrics}
+              dateValue={dateArray}
+            />
+          </div>
+        </div>
+          <div className="tile-container">
           <div className="tile tile-margin">
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><DevicesApps size={50}/></div>
-                <div> UgandaEMR</div>
+                <div> UgandaEMR+ </div>
               </div>
             </div>
             <div className="emr-details-table">
@@ -118,7 +155,7 @@ const UgandaemrPOC = (props) => {
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><Store size={50}/></div>
-                <div> Health Facilities</div>
+                <div> POC Facilities</div>
               </div>
               <div className="tile-bottom-style">
                 <div className="tile-item-value"> {facilityDetailsPlus().count}</div>
@@ -155,35 +192,15 @@ const UgandaemrPOC = (props) => {
         </div>
 
         <div className="item-chart-container">
-          <div className="item-chart item-chart-left">
+          <div className="item-chart">
             <div className="cds--cc--title">
               <p className="title" role="heading" aria-level="2">
                 UgandaEMR+
-                ({dayjs(dates[0]).format("DD/MMM/YYYY")} - {dayjs(dates[1]).format("DD/MMM/YYYY")})
+                ({dayjs(dateArray[0]).format("DD/MMM/YYYY")} - {dayjs(dateArray[1]).format("DD/MMM/YYYY")})
               </p>
             </div>
             <DataTableComponent rows={facilityDetailsPlus().facility}
-                                headers={fourXheaders}/>
-          </div>
-          <div className="item-chart switcher-date-container">
-            <div className="item-chart-donut item-chart-left">
-              <DonutChart
-                data={[{group: "UgandaEMR+", value: facilityDetailsPlus().count ?? 0}, {
-                  group: "UgandaEMR",
-                  value: 1700 - (facilityDetailsPlus().count ?? 0)
-                }]}
-                options={donutEMRCoverageOptions}
-              />
-            </div>
-            <div className="item-chart-donut">
-              <DonutChart
-                data={[{group: "No VL Exchange", value: (1700 - vlExchange())}, {
-                  group: "VL Exchange",
-                  value: vlExchange()
-                }]}
-                options={donutVLCoverageOptions}
-              />
-            </div>
+                                headers={fourXheaders} indicator={true}/>
           </div>
         </div>
       </>
