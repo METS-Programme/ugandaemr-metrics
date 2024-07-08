@@ -11,7 +11,7 @@ import CoverageComponent from "../nav-Items/coverage";
 import PocComponent from "../nav-Items/poc";
 
 const HomeComponent = () => {
-  const [switchName, setSwitchName] = useState("ugandaemr");
+  const [switchName, setSwitchName] = useState("eafya");
   const [navItem, setNavItem] = useState("coverage");
 
   const handleOnClickItem = (navItem) => {
