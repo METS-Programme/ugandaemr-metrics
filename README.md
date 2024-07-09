@@ -1,4 +1,4 @@
-# UgandaEMR UgandaemrPOC
+# EMR Metrics
 
 This dashboard shows the different metrics for different EMRs used currently at facilities
 
