@@ -9,9 +9,10 @@ import {
 } from "@carbon/react";
 import "@carbon/charts/styles.css";
 import './home.css';
-import {DataShare, Microscope, ShareKnowledge, Tour, Screen} from "@carbon/icons-react";
+import {DataShare, Events, ShareKnowledge, Tour, Screen} from "@carbon/icons-react";
 import CoverageComponent from "../nav-Items/coverage";
 import PocComponent from "../nav-Items/poc";
+import EmptyStateComponent from "../empty-state/empty-state";
 
 const HomeComponent = () => {
   const [switchName, setSwitchName] = useState("ugandaemr");
@@ -50,13 +51,12 @@ const HomeComponent = () => {
               Coverage </SideNavLink>
 
             <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> POC
-              Stats </SideNavLink>
+              Data </SideNavLink>
 
-            <SideNavLink renderIcon={Microscope} large onClick={() =>handleOnClickItem("vl")}> VL
-              Exchange </SideNavLink>
+            <SideNavLink renderIcon={Events} large onClick={() =>handleOnClickItem("performance")}> Performance </SideNavLink>
 
-            <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("ehmis")}> eHMIS
-              Exchange </SideNavLink>
+            <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> EMR
+              Health Exchange </SideNavLink>
           </SideNavItems>
 
           {/*<footer className="footer">*/}
@@ -67,6 +67,8 @@ const HomeComponent = () => {
         <section className="section-wrapper">
           {navItem === "coverage" && (<CoverageComponent emr={switchName}/>)}
           {navItem === "poc" && (<PocComponent emr={switchName}/>)}
+          {navItem === "performance" && (<EmptyStateComponent />)}
+          {navItem === "exchange" && (<EmptyStateComponent />)}
         </section>
       </Content>
     </>

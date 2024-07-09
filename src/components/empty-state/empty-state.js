@@ -16,7 +16,7 @@ const EmptyStateComponent = () => {
           <EmptyStateIllustration />
           <p className="empty-state-content">No data to display</p>
           <p className="empty-state-explainer">
-            Use the report filters above to build your reports
+            Use the navigation controls on the side & at the top right corner
           </p>
         </Tile>
       </Layer>
