@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ugemr-metrics/Metrics.css";
+import "../ugemr-metrics/ugandaemr-coverage/UgandaemrCoverage.css";
 import { ArrowRight } from "@carbon/react/icons"
 import {Button} from "@carbon/react";
 

@@ -1,22 +1,21 @@
-.tile-container {
-  padding-top: 2rem;
+.tile-container-ug-coverage {
   display: flex;
 }
 
-.tile {
-  width: 25%;
+.tile-ug-coverage {
+  width: 33.3%;
   border: .0625rem solid #e0e0e0;
   min-height: 10rem;
   border-radius: 1rem;
   background-color: #ffff;
 }
 
-.tile-margin {
-  margin-right: 2rem;
+.tile-margin-ug-coverage {
+  margin-right: 1rem;
 }
 
 .item-chart-container {
-  padding-top: 2rem;
+  padding-top: 1rem;
   display: flex;
 }
 
@@ -27,22 +26,21 @@
   border-radius: .5rem;
   background-color: #ffff;
   padding: 1rem;
+
+  .cds--cc--title p.title {
+    padding-bottom: 1rem;
+  }
 }
 
 .item-chart-left {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .metrics-body {
   background-color: #e0e0e08a;
+  min-height: calc(100vh - 54px);
 }
 
-.footer {
-  text-align: center;
-  font-family: serif;
-  border-top: solid 1px #009384;
-  padding: .5rem;
-}
 
 .rights-panel {
   margin-bottom: .3rem;
@@ -88,6 +86,15 @@
   }
 }
 
+.non-functional-emr {
+  padding-left: 5px;
+
+  svg {
+    margin: 0 0 -0.2rem 0;
+    color: darkgray;
+  }
+}
+
 .arrow-icon {
   fill: #009d9a !important;
   margin-left: .2rem;
@@ -113,8 +120,21 @@
 }
 .switcher-date-container {
   display: flex;
+  justify-content: end;
 }
 
 .date-input-container {
   margin-top: 2.5rem
+}
+
+.item-chart-donut {
+  padding: 1rem;
+
+  svg {
+    margin-left: 8rem;
+  }
+}
+
+.section-wrapper {
+  margin-left: 15rem;
 }

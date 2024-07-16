@@ -1,0 +1,54 @@
+.metrics-header {
+  height: 3rem;
+  background-color: #009384;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+
+  .cds--popover {
+    display: none;
+  }
+
+  .cds--overflow-menu.cds--overflow-menu--open:hover {
+    background-color: transparent !important;
+  }
+
+  .cds--overflow-menu:hover, .cds--overflow-menu__trigger:hover {
+    background-color: transparent;
+  }
+
+  .cds--overflow-menu__wrapper {
+    margin-right: 0.5rem;
+  }
+
+  .cds--overflow-menu.cds--overflow-menu--open, .cds--overflow-menu.cds--overflow-menu--open .cds--overflow-menu__trigger {
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  svg {
+    fill: #ffffff;
+  }
+}
+
+
+
+.header-label {
+  padding: 0.8rem;
+  font-weight: bold;
+}
+
+.metrics-body {
+  background-color: #e0e0e08a;
+}
+
+.footer {
+  text-align: center;
+  font-family: serif;
+  border-top: solid 1px #009384;
+  padding: .5rem;
+}

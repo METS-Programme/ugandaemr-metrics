@@ -2,7 +2,7 @@ import React from 'react';
 import "./Clinic.master.css";
 import { Store, DevicesApps, GroupPresentation, UserMultiple } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
-import ViewButton from "../view-button";
+import ViewButton from "../home/view-button";
 
 const EafyaMetrics = () => {
     return (

@@ -1,9 +1,9 @@
-# UgandaEMR Metrics
+# EMR Metrics
 
 This dashboard shows the different metrics for different EMRs used currently at facilities
 
 ## Dashboard
-![Metrics dashboard sample](assets/emr-dashboard.png)
+![UgandaemrPOC dashboard sample](assets/emr-dashboard.png)
 
 ## Getting Started
 
