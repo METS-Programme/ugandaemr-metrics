@@ -53,9 +53,9 @@ const HomeComponent = () => {
             <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> Live POC
               Data </SideNavLink>
 
-            <SideNavLink renderIcon={Events} large onClick={() =>handleOnClickItem("performance")}> Performance </SideNavLink>
+            <SideNavLink className="disabled-link" renderIcon={Events} large onClick={() =>handleOnClickItem("performance")}> Performance </SideNavLink>
 
-            <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> HIE
+            <SideNavLink className="disabled-link" renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> HIE
               Metrics </SideNavLink>
           </SideNavItems>
         </SideNav>
