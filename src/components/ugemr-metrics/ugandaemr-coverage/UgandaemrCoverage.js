@@ -5,11 +5,10 @@ import {
   ScreenOff,
   DevicesApps,
   IbmCloudLogging,
-  GroupPresentation
+  CloudLogging
 } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
 import {DataTableComponent} from "../../data-table/data-table.component";
-import ViewButton from "../../home/view-button";
 import {
   facilityHeaders, pieChartLevelsRDEPOCOptions,
   pieChartRDEPOCOptions,
@@ -79,8 +78,11 @@ const UgandaemrCoverage = (props) => {
               </div>
               <div className="tile-bottom-style">
                 <div
+                  className="tile-item-value"> {((facilityDetailsPlus(data).count / 1700) * 100).toFixed(1)}%
+                  <span className="level-text"> &nbsp;({facilityDetailsPlus(data).count} / 1700)</span>
+                </div>
+                <div
                   className="tile-item-value"> {facilityDetailsPlus(data).count}</div>
-                <ViewButton/>
               </div>
             </div>
           </div>
@@ -88,13 +90,21 @@ const UgandaemrCoverage = (props) => {
           <div className="tile-ug-coverage tile-margin-ug-coverage">
             <div className="tile-header">
               <div className="tile-items-container">
-                <div className="tile-icon"><IbmCloudLogging size={50}/></div>
+                <div className="tile-icon"><CloudLogging size={50}/></div>
                 <div>Coverage By Level</div>
               </div>
-              <div className="tile-bottom-style">
-                <div
-                  className="tile-item-value"> {facilityDetailsPlus(data).count}</div>
-                <ViewButton/>
+              <div className="level-style">
+                {coverageByLevel(data)?.pieData?.map((level,index) => (
+                  <>
+                    <span key={index}>
+                      {level?.group}
+                    </span>
+                    <span> - </span>
+                    <span className="level-value-style">
+                       {level?.value}
+                    </span>
+                  </>
+                ))}
               </div>
             </div>
           </div>
@@ -107,9 +117,18 @@ const UgandaemrCoverage = (props) => {
                 <div>POC Vs Retrospective</div>
               </div>
               <div className="tile-bottom-style">
-                <div
-                  className="tile-item-value"> {1700 - facilityDetailsPlus(data).count} </div>
-                <ViewButton/>
+                <div className="tile-item-value">
+                  {((facilityByFunctionality(data).POC / facilityDetailsPlus(data).count) * 100).toFixed(1)}%
+                  <span className="level-text">
+                    &nbsp; ({facilityByFunctionality(data).POC} / {facilityDetailsPlus(data).count})
+                  </span>
+                </div>
+                <div className="tile-item-value">
+                  {((facilityByFunctionality(data).RDE / facilityDetailsPlus(data).count) * 100).toFixed(1)}%
+                  <span className="level-text">
+                    &nbsp; ({facilityByFunctionality(data).RDE} / {facilityDetailsPlus(data).count})
+                  </span>
+                </div>
               </div>
             </div>
           </div>

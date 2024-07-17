@@ -58,11 +58,6 @@ const HomeComponent = () => {
             <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> Live POC
               Data </SideNavLink>
           </SideNavItems>
-
-          {/*<footer className="footer">*/}
-          {/*  <div className="rights-panel">© 2024 All rights reserved</div>*/}
-          {/*  <div> Monitoring & Evaluation Technical Support (METS)</div>*/}
-          {/*</footer>*/}
         </SideNav>
         <section className="section-wrapper">
           {navItem === "coverage" && (<CoverageComponent emr={switchName}/>)}

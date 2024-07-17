@@ -76,8 +76,8 @@
 }
 
 .tile-item-value {
-  padding-top: 2.8rem;
-  font-size: 25px;
+  padding-top: 3.1rem;
+  font-size: 21px;
 }
 
 .emr-details-table td {
@@ -146,4 +146,19 @@
 
 .section-wrapper {
   margin-left: 15rem;
+}
+
+.level-style {
+  padding-top: 3rem;
+  font-size: small;
+}
+
+.level-value-style {
+  margin-right: 0.5rem;
+  color: #009d9a;
+  font-weight: bold;
+}
+
+.level-text {
+  font-size: small;
 }
