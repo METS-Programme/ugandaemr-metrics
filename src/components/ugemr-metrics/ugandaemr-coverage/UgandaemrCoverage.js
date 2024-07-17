@@ -20,7 +20,7 @@ import dayjs from "dayjs";
 import {PieChart, StackedBarChart} from "@carbon/charts-react";
 import {
   coverageByLevel,
-  coverageByPartner,
+  coverageByPartner, facilityByFunctionality,
   facilityDetailsPlus
 } from "./functions";
 
@@ -70,11 +70,12 @@ const UgandaemrCoverage = (props) => {
               </table>
             </div>
           </div>
+
           <div className="tile-ug-coverage tile-margin-ug-coverage">
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><IbmCloudLogging size={50}/></div>
-                <div>UgandaEMR+ Facilities</div>
+                <div>UgandaEMR+ Coverage</div>
               </div>
               <div className="tile-bottom-style">
                 <div
@@ -83,12 +84,27 @@ const UgandaemrCoverage = (props) => {
               </div>
             </div>
           </div>
+
+          <div className="tile-ug-coverage tile-margin-ug-coverage">
+            <div className="tile-header">
+              <div className="tile-items-container">
+                <div className="tile-icon"><IbmCloudLogging size={50}/></div>
+                <div>Coverage By Level</div>
+              </div>
+              <div className="tile-bottom-style">
+                <div
+                  className="tile-item-value"> {facilityDetailsPlus(data).count}</div>
+                <ViewButton/>
+              </div>
+            </div>
+          </div>
+
           <div className="tile-ug-coverage">
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><ScreenOff size={50}/>
                 </div>
-                <div>UgandaEMR (3.x)</div>
+                <div>POC Vs Retrospective</div>
               </div>
               <div className="tile-bottom-style">
                 <div
@@ -97,6 +113,7 @@ const UgandaemrCoverage = (props) => {
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="tile-container">
@@ -104,9 +121,9 @@ const UgandaemrCoverage = (props) => {
             <div className="tile-header">
               <div className="tile-items-container">
                 <PieChart options={pieChartRDEPOCOptions}
-                          data={[{group: "POC", value: 17}, {
-                            group: "RDE",
-                            value: 10
+                          data={[{group: "POC", value: facilityByFunctionality(data).POC}, {
+                            group: "Retrospective",
+                            value: facilityByFunctionality(data).RDE
                           }]}/>
               </div>
             </div>

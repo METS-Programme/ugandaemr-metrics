@@ -11,7 +11,7 @@ export const facilityDetailsPlus = (data) => {
       district: record?.sourceid === "aUoqX6lBNFA" ? "Kampala District" : record?.district,
       ip: record?.ip,
       agency: record?.agency,
-      functionality: record?.poc_active === 1 ? "POC" : "RDE",
+      functionality: record?.poc_active === 1 ? "POC" : "Retrospective",
       active: record?.off_last_3_days === 0 ? "Yes" : "No",
     });
 
@@ -36,7 +36,7 @@ export const coverageByPartner = (data, agency) => {
     });
 
     coverageByAgency.push({
-      group: "RDE",
+      group: "Retrospective",
       key: selectedIP?.ip,
       value: RDEFacilities?.length ?? 0
     });
@@ -60,7 +60,7 @@ export const coverageByLevel = (data) => {
     });
 
     coverageLevelStacked.push({
-      group: "RDE",
+      group: "Retrospective",
       key: selectedFacility?.ftype,
       value: RDEFacilities?.length ?? 0
     });
@@ -105,4 +105,16 @@ export function getUniqueLevels(facilityArray){
   }).filter((item) => !!item);
 
   return newFacilityLevel;
+}
+
+
+export function facilityByFunctionality(data) {
+  const facilities = facilityDetailsPlus(data).facility;
+  const POCFacilities = facilities.filter((facility) => facility?.functionality === "POC");
+  const RDEFacilities = facilities.filter((facility) => facility?.functionality === "Retrospective");
+
+  return {
+    POC: POCFacilities?.length,
+    RDE: RDEFacilities?.length
+  }
 }

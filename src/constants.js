@@ -124,13 +124,13 @@ export const donutVLCoverageOptions = {
 
 
 export const pieChartRDEPOCOptions = {
-  title: "POC Vs RDE",
+  title: "POC Vs Retrospective",
   resizable: true,
   height: "400px",
   color: {
     scale: {
       POC: "#009d9a",
-      RDE: "#9f1853"
+      Retrospective: "#9f1853"
     }
   },
 }
@@ -154,7 +154,7 @@ export const stackedChartByCDCPartners = {
   color: {
     scale: {
       POC: "#198038",
-      RDE: "#ff832b"
+      Retrospective: "#ff832b"
     }
   },
   height: "500px"
@@ -174,7 +174,7 @@ export const stackedChartByUSAIDPartners = {
   color: {
     scale: {
       POC: "#005d5d",
-      RDE: "#9f1853"
+      Retrospective: "#9f1853"
     }
   },
 };
