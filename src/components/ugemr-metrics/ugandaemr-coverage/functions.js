@@ -42,7 +42,10 @@ export const coverageByPartner = (data, agency) => {
     });
   });
 
-  return coverageByAgency;
+  return {
+    facilities: coverageByAgency,
+    totalCount: facilities?.length
+  };
 }
 
 export const coverageByLevel = (data) => {

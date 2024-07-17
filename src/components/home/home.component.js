@@ -47,16 +47,16 @@ const HomeComponent = () => {
       <Content className="metrics-body">
         <SideNav aria-label="Side navigation">
           <SideNavItems>
-            <SideNavLink renderIcon={Tour} large onClick={() => handleOnClickItem("coverage")}> EMR
-              Coverage Summary </SideNavLink>
+            <SideNavLink renderIcon={Tour} large onClick={() => handleOnClickItem("coverage")}> EMR+
+              Coverage</SideNavLink>
+
+            <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> Live POC
+              Data </SideNavLink>
 
             <SideNavLink renderIcon={Events} large onClick={() =>handleOnClickItem("performance")}> Performance </SideNavLink>
 
             <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> HIE
               Metrics </SideNavLink>
-
-            <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> Live POC
-              Data </SideNavLink>
           </SideNavItems>
         </SideNav>
         <section className="section-wrapper">
