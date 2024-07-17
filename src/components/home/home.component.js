@@ -48,15 +48,15 @@ const HomeComponent = () => {
         <SideNav aria-label="Side navigation">
           <SideNavItems>
             <SideNavLink renderIcon={Tour} large onClick={() => handleOnClickItem("coverage")}> EMR
-              Coverage </SideNavLink>
-
-            <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> POC
-              Data </SideNavLink>
+              Coverage Summary </SideNavLink>
 
             <SideNavLink renderIcon={Events} large onClick={() =>handleOnClickItem("performance")}> Performance </SideNavLink>
 
-            <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> EMR
-              Health Exchange </SideNavLink>
+            <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> HIE
+              Metrics </SideNavLink>
+
+            <SideNavLink renderIcon={ShareKnowledge} large onClick={() => handleOnClickItem("poc")}> Live POC
+              Data </SideNavLink>
           </SideNavItems>
 
           {/*<footer className="footer">*/}

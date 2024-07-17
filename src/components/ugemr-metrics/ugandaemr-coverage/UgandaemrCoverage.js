@@ -1,15 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import "./UgandaemrCoverage.css";
-import { CheckmarkOutline, ScreenOff, DevicesApps, IbmCloudLogging } from "@carbon/react/icons"
+import {
+  CheckmarkOutline,
+  ScreenOff,
+  DevicesApps,
+  IbmCloudLogging,
+  GroupPresentation
+} from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
 import {DataTableComponent} from "../../data-table/data-table.component";
 import ViewButton from "../../home/view-button";
 import {
-  donutEMRCoverageOptions, facilityHeaders,
-  fourXheaders,
+  facilityHeaders, pieChartLevelsRDEPOCOptions,
+  pieChartRDEPOCOptions,
+  stackedChartByCDCPartners, stackedChartByLevel,
+  stackedChartByUSAIDPartners,
 } from "../../../constants";
 import dayjs from "dayjs";
-import {DonutChart} from "@carbon/charts-react";
+import {PieChart, StackedBarChart} from "@carbon/charts-react";
+import {
+  coverageByLevel,
+  coverageByPartner,
+  facilityDetailsPlus
+} from "./functions";
 
 const UgandaemrCoverage = (props) => {
   const [data, setData] = useState([]);
@@ -25,22 +38,6 @@ const UgandaemrCoverage = (props) => {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };
-
-  const facilityDetailsPlus = () => {
-    const facility = [];
-    let count = 0;
-    data?.forEach((record, index) => {
-      facility.push({
-        id: `${index++}`,
-        no: `${index++}`,
-        facility: record?.facilityname
-      });
-
-      count += 1;
-    });
-
-    return { facility,count };
   };
 
   useEffect(() => {
@@ -80,7 +77,8 @@ const UgandaemrCoverage = (props) => {
                 <div>UgandaEMR+ Facilities</div>
               </div>
               <div className="tile-bottom-style">
-                <div className="tile-item-value"> {facilityDetailsPlus().count}</div>
+                <div
+                  className="tile-item-value"> {facilityDetailsPlus(data).count}</div>
                 <ViewButton/>
               </div>
             </div>
@@ -93,33 +91,64 @@ const UgandaemrCoverage = (props) => {
                 <div>UgandaEMR (3.x)</div>
               </div>
               <div className="tile-bottom-style">
-                <div className="tile-item-value"> {1700 - facilityDetailsPlus().count} </div>
+                <div
+                  className="tile-item-value"> {1700 - facilityDetailsPlus(data).count} </div>
                 <ViewButton/>
               </div>
             </div>
           </div>
         </div>
 
+        <div className="tile-container">
+          <div className="tile tile-margin">
+            <div className="tile-header">
+              <div className="tile-items-container">
+                <PieChart options={pieChartRDEPOCOptions}
+                          data={[{group: "POC", value: 17}, {
+                            group: "RDE",
+                            value: 10
+                          }]}/>
+              </div>
+            </div>
+          </div>
+
+          <div className="tile-coverage  tile-margin">
+            <StackedBarChart options={stackedChartByLevel}
+                             data={coverageByLevel(data).stackedData}/>
+          </div>
+
+          <div className="tile tile-margin">
+            <div className="tile-header">
+              <div className="tile-items-container">
+                <PieChart options={pieChartLevelsRDEPOCOptions}
+                          data={coverageByLevel(data)?.pieData}/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="tile-container">
+          <div className="tile-coverage tile-margin">
+            <StackedBarChart options={stackedChartByCDCPartners}
+                             data={coverageByPartner(data, "CDC")}/>
+          </div>
+          <div className="tile-coverage tile-margin">
+            <StackedBarChart options={stackedChartByUSAIDPartners}
+                             data={coverageByPartner(data, "USAID")}/>
+          </div>
+        </div>
+
         <div className="item-chart-container">
-          <div className="item-chart item-chart-left">
+          <div className="item-chart">
             <div className="cds--cc--title">
               <p className="title" role="heading" aria-level="2">
-                UgandaEMR+ Facilities as per Today ({dayjs(new Date()).format("DD/MMM/YYYY")})
+                UgandaEMR+ Facilities as per Today
+                ({dayjs(new Date()).format("DD/MMM/YYYY")})
               </p>
             </div>
-            <DataTableComponent rows={facilityDetailsPlus().facility}
-                                headers={facilityHeaders} indicator={false} showDownload={facilityDetailsPlus().facility.length > 0}/>
-          </div>
-          <div className="item-chart">
-            <div className="item-chart-donut">
-              <DonutChart
-                data={[{group: "UgandaEMR+", value: facilityDetailsPlus().count ?? 0}, {
-                  group: "UgandaEMR",
-                  value: 1700 - (facilityDetailsPlus().count ?? 0)
-                }]}
-                options={donutEMRCoverageOptions}
-              />
-            </div>
+            <DataTableComponent rows={facilityDetailsPlus(data).facility}
+                                headers={facilityHeaders} indicator={false}
+                                showDownload={facilityDetailsPlus(data).facility.length > 0}/>
           </div>
         </div>
       </>
