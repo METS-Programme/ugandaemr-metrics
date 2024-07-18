@@ -21,6 +21,7 @@ import {
   coverageByPartner, facilityByFunctionality,
   facilityDetailsPlus
 } from "./functions";
+import ViewButton from "../../home/view-button";
 
 const UgandaemrCoverage = (props) => {
   const [data, setData] = useState([]);
@@ -46,45 +47,32 @@ const UgandaemrCoverage = (props) => {
       <>
         <div className="tile-container-ug-coverage">
           <div className="tile-ug-coverage tile-margin-ug-coverage">
-            <div className="tile-header">
+            <div className="tile-header tile-header-style">
               <div className="tile-items-container">
                 <div className="tile-icon"><Tour size={50}/></div>
-                <div> UgEMR+ Coverage</div>
+                <div className="header-text-color">Coverage</div>
               </div>
             </div>
-            <div className="emr-details-table">
-              <table>
-                <tbody>
-                <tr>
-                  <td className="td-text-align">Version:</td>
-                  <td className="td-details-value"> &nbsp; {'4.0.0-SNAPSHOT'}</td>
-                </tr>
-                <tr>
-                  <td className="td-text-align">Sites:</td>
-                  <td className="td-details-value">
-                    &nbsp;{facilityDetailsPlus(data).count}
-                    &nbsp;({((facilityDetailsPlus(data).count / 1700) * 100).toFixed(1)}%)
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-              <div className="level">
-                {coverageByLevel(data)?.pieData?.map((level, index) => (
-                  <>
-                  <span>
-                      {level?.group === "General Hospital"
-                        ? "GH"
-                        : level?.group === "Special Clinic"
-                          ? "SC"
-                          : level?.group === "HC IV"
-                            ? "HCIV"
-                            : level?.group === "HC III"
-                              ? "HCIII"
-                              : level?.group
-                      } </span> - <span className="td-details-value"> {level?.value} </span> &nbsp;
-                  </>
-                ))}
+            <div className="tile-bottom-style">
+              <div className="emr-details-table">
+                <table>
+                  <tbody>
+                  <tr>
+                    <td className="td-text-align">Version:</td>
+                    <td
+                      className="td-details-value"> &nbsp; {'4.0.0-SNAPSHOT'}</td>
+                  </tr>
+                  <tr>
+                    <td className="td-text-align">% of sites:</td>
+                    <td className="td-details-value">
+                      &nbsp;{((facilityDetailsPlus(data).count / 1700) * 100).toFixed(1)}% of 1700
+
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
+              <div className="tile-item-coverage"> {facilityDetailsPlus(data).count}</div>
             </div>
           </div>
 
@@ -92,33 +80,33 @@ const UgandaemrCoverage = (props) => {
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><GroupPresentation size={50}/></div>
-                <div>POC Vs RDE</div>
+                <div className="header-text-color">POC Vs RDE</div>
               </div>
             </div>
             <div className="emr-details-table">
               <table>
                 <tbody>
                 <tr>
-                  <td className="td-text-align">POC:</td>
+                  <td className="td-text-align">No. of POC:</td>
                   <td className="td-details-value">
-                    &nbsp; {((facilityByFunctionality(data).POC / facilityDetailsPlus(data).count) * 100).toFixed(1)}%
                     <span className="level-text">
-                      &nbsp; ({facilityByFunctionality(data).POC} / {facilityDetailsPlus(data).count})
+                     &nbsp; {facilityByFunctionality(data).POC} of {facilityDetailsPlus(data).count}
                     </span>
+                    &nbsp; ({((facilityByFunctionality(data).POC / facilityDetailsPlus(data).count) * 100).toFixed(1)}%)
                   </td>
                 </tr>
                 <tr>
-                  <td className="td-text-align">Retrospective:</td>
+                  <td className="td-text-align">No. of Retrospective:</td>
                   <td className="td-details-value">
-                    &nbsp; {((facilityByFunctionality(data).RDE / facilityDetailsPlus(data).count) * 100).toFixed(1)}%
                     <span className="level-text">
-                      &nbsp; ({facilityByFunctionality(data).RDE} / {facilityDetailsPlus(data).count})
+                      &nbsp; {facilityByFunctionality(data).RDE} of {facilityDetailsPlus(data).count}
                     </span>
+                    &nbsp; ({((facilityByFunctionality(data).RDE / facilityDetailsPlus(data).count) * 100).toFixed(1)}%)
                   </td>
                 </tr>
                 <tr>
                   <td className="td-text-align">Cumm Patient No:</td>
-                  <td>&nbsp; ###</td>
+                  <td className="td-details-value">&nbsp; TBA</td>
                 </tr>
                 </tbody>
               </table>
@@ -129,7 +117,7 @@ const UgandaemrCoverage = (props) => {
             <div className="tile-header">
               <div className="tile-items-container">
                 <div className="tile-icon"><CloudServiceManagement size={50}/></div>
-                <div>UgEMR+ IM</div>
+                <div className="header-text-color">Mechanism</div>
               </div>
             </div>
 
@@ -171,7 +159,7 @@ const UgandaemrCoverage = (props) => {
               <div className="tile-items-container">
                 <div className="tile-icon"><EventsAlt size={50}/>
                 </div>
-                <div>UgEMR+ HWs</div>
+                <div className="header-text-color">Data Clerks</div>
               </div>
             </div>
             <div className="emr-details-table">
@@ -179,11 +167,11 @@ const UgandaemrCoverage = (props) => {
                 <tbody>
                 <tr>
                   <td className="td-text-align">Gov't:</td>
-                  <td>&nbsp; ###</td>
+                  <td className="td-details-value">&nbsp; TBA</td>
                 </tr>
                 <tr>
                   <td className="td-text-align">IP:</td>
-                  <td>&nbsp; ###</td>
+                  <td className="td-details-value">&nbsp; TBA</td>
                 </tr>
                 </tbody>
               </table>

@@ -5,7 +5,7 @@
 
 .tile {
   width: 25%;
-  border: .0625rem solid #e0e0e0;
+  border: .0625rem solid #b5b5b5e3;
   min-height: 10rem;
   border-radius: 1rem;
   background-color: #ffff;
@@ -105,4 +105,3 @@
 .date-input-container {
   margin-top: 2.5rem
 }
-

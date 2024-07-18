@@ -4,7 +4,7 @@
 
 .tile-ug-coverage {
   width: 24%;
-  border: .0625rem solid #e0e0e0;
+  border: .0625rem solid #b5b5b5e3;
   min-height: 10rem;
   border-radius: 1rem;
   background-color: #ffff;
@@ -21,7 +21,7 @@
 
 .item-chart {
   width: 100%;
-  border: .0625rem solid #e0e0e0;
+  border: .0625rem solid #b5b5b5e3;
   min-height: 600px;
   border-radius: .5rem;
   background-color: #ffff;
@@ -34,7 +34,7 @@
 
 .tile-coverage {
   width: 50%;
-  border: .0625rem solid #e0e0e0;
+  border: .0625rem solid #b5b5b5e3;
   min-height: 10rem;
   border-radius: 1rem;
   background-color: #ffff;
@@ -81,7 +81,7 @@
 }
 
 .td-text-align {
-  text-align: end;
+  text-align: left;
 }
 
 .emr-details-table td {
@@ -167,10 +167,28 @@
 }
 
 .level {
-  font-size: 13px;
-  margin: 0 0.5rem;
+  font-size: 14px;
+  margin: 0 0.5rem 0 0;
 }
 
 .td-details-value {
   font-weight: bold;
+}
+
+.tile-header-style {
+  border-bottom-color: #d6d5d5;
+  border-bottom-width: 1px;
+  /*border-bottom-style: solid;*/
+  margin-bottom: 2%;
+}
+
+.header-text-color {
+  margin: 1% 0 0 5%;
+  font-size: 1.3em
+}
+
+.tile-item-coverage {
+  padding-right: 2rem;
+  font-size: 3em;
+  color: #b9b7b7;
 }
