@@ -52,3 +52,16 @@
   border-top: solid 1px #009384;
   padding: .5rem;
 }
+
+.disabled-link {
+  pointer-events: none;
+  color: gray;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+a.cds--side-nav__link:focus {
+  background: #80808030;
+  border-left: 5px solid #009d9a;
+  outline: none !important;
+}
