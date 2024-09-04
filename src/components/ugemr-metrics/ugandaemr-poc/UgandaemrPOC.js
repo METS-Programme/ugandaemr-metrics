@@ -7,6 +7,10 @@ import ViewButton from "../../home/view-button";
 import { fourXheaders } from "../../../constants";
 import dayjs from "dayjs";
 import { DateFilterInput } from "../../date-picker/date-picker";
+import {
+  facilityDetailsPlus,
+  uniqueFacilityByUUID
+} from "../ugandaemr-coverage/functions"
 
 const UgandaemrPOC = (props) => {
   const [data, setData] = useState([]);
@@ -90,24 +94,38 @@ const UgandaemrPOC = (props) => {
   const facilityDetailsPlus = () => {
     const facility = [];
     let count = 0;
-    data?.forEach((record, index) => {
-      if (record?.emrversion === "4.0.0-SNAPSHOT") {
-        facility.push({
-          id: `${index++}`,
-          facility: record?.facilityname,
-          triage: record?.value?.dataentry?.[0]?.['Triage'] ?? 0,
-          clinician: record?.value?.dataentry?.[0]?.['Clinician'] ?? 0,
-          lab: record?.value?.dataentry?.[0]?.['Lab'] ?? 0,
-          pharmacy: record?.value?.dataentry?.[0]?.['Pharmacy'] ?? 0,
-          vlSent: record?.value?.dataentry?.[0]?.['VL exchange send sample'] ?? 0,
-          vlReceived: record?.value?.dataentry?.[0]?.['VL exchange receive'] ?? 0
-        })
+    const ugandaEMRPlusFacilities = data.filter((facility) => facility?.emrversion === "4.0.0-SNAPSHOT");
+    const uniqueFacilities = uniqueFacilityByUUID(ugandaEMRPlusFacilities);
+    uniqueFacilities.forEach((uniqueFacility, index) => {
 
-        count += 1;
-      }
+      let triage = 0, clinician = 0 , lab = 0, pharmacy = 0, vlSent = 0, vlReceived = 0;
+      const dataForFacility = ugandaEMRPlusFacilities.filter((facility) => facility?.sourceid === uniqueFacility?.sourceid);
+      dataForFacility.forEach((dataFacility) => {
+        triage += dataFacility?.value?.dataentry?.[0]?.['Triage'] ?? 0;
+        clinician += dataFacility?.value?.dataentry?.[0]?.['Clinician'] ?? 0;
+        lab += dataFacility?.value?.dataentry?.[0]?.['Lab'] ?? 0;
+        pharmacy += dataFacility?.value?.dataentry?.[0]?.['Pharmacy'] ?? 0;
+        vlSent += dataFacility?.value?.dataentry?.[0]?.['VL exchange send sample'] ?? 0;
+        vlReceived += dataFacility?.value?.dataentry?.[0]?.['VL exchange receive'] ?? 0;
+      });
+
+      facility.push({
+        id: `${index++}`,
+        no: `${index++}`,
+        facility: uniqueFacility?.facilityname,
+        triage: triage,
+        clinician: clinician,
+        lab: lab,
+        pharmacy: pharmacy,
+        vlSent: vlSent,
+        vlReceived: vlReceived
+      })
     });
 
-    return { facility,count };
+
+    console.info(facility);
+
+    return { facility, count: uniqueFacilities?.length };
   }
 
   useEffect(() => {
@@ -200,7 +218,7 @@ const UgandaemrPOC = (props) => {
               </p>
             </div>
             <DataTableComponent rows={facilityDetailsPlus().facility}
-                                headers={fourXheaders} indicator={true}/>
+                                headers={fourXheaders} indicator={true} showDownload={facilityDetailsPlus().count > 0}/>
           </div>
         </div>
       </>
