@@ -101,11 +101,11 @@ export const DataTableComponent = (props) => {
                 <TableRow {...getRowProps({ row })}>
                   {row.cells.map((cell) => (
                     <TableCell key={cell.id}>
-                      {cell.value > 0 && indicator === true ? (
+                      { typeof cell.value === 'number' && cell.value > 0 && indicator === true ? (
                         <div className="emr-version">
                           <CheckmarkOutline size={18} />
                         </div>
-                      ) : cell.value === 0 && indicator === true ? (
+                      ) : typeof cell.value === 'number' && cell.value === 0 && indicator === true ? (
                         <div className="non-functional-emr">
                           <Close size={18} />
                         </div>

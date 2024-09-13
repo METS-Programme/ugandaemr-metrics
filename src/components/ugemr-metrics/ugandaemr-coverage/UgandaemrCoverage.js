@@ -140,7 +140,10 @@ const UgandaemrCoverage = (props) => {
                 </tr>
                 <tr>
                   <td className="td-text-align">DOD:</td>
-                  <td className="td-details-value">&nbsp; 0</td>
+                  <td className="td-details-value">
+                    &nbsp; {((coverageByPartner(data, "DOD").totalCount / facilityDetailsPlus(data).count) * 100).toFixed(1)}%
+                    &nbsp; ({coverageByPartner(data, "DOD").totalCount} / {facilityDetailsPlus(data).count})
+                  </td>
                 </tr>
                 <tr>
                   <td className="td-text-align">Others:</td>

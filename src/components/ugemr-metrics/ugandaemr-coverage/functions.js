@@ -121,3 +121,13 @@ export function facilityByFunctionality(data) {
     RDE: RDEFacilities?.length
   }
 }
+
+export function uniqueFacilityByUUID (data) {
+  const seen = new Set();
+
+  return data.filter(item => {
+    const duplicate = seen.has(item?.sourceid);
+    seen.add(item?.sourceid);
+    return !duplicate;
+  });
+}
