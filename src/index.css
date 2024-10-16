@@ -12,6 +12,35 @@ code {
     monospace;
 }
 
+.header-label {
+  .cds--btn--tertiary {
+    margin-top: -1rem !important;
+    border-color: #009d9a !important;
+    color: #009d9a !important;
+    border-style: unset !important;
+    border-width: unset !important;
+  }
+
+  .cds--btn--tertiary:focus,  .cds--btn--tertiary:hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+
+.toggle-menu-btn {
+  display: none !important;
+}
+
+.tile-wrapper-one, .tile-wrapper-two {
+  display: flex;
+  width: 100%;
+}
+
+.tile-ug-coverage {
+  width: 50% !important;
+}
+
 @media only screen and (max-width: 600px) {
   /* Styles for small mobile screens */
   .section-wrapper {
@@ -39,6 +68,27 @@ code {
   .item-chart-container {
     padding-top: unset !important;
   }
+
+  .toggle-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .nav-controller.metrics-body {
+    .cds--side-nav--ux {
+      inline-size: 16rem !important;
+    }
+
+    nav.hidden {
+      display: inline-flex;
+    }
+  }
+
+  .tile-wrapper-one, .tile-wrapper-two {
+    display: unset;
+    width: unset;
+  }
+
+
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1055px) {
@@ -71,36 +121,35 @@ code {
     width: 98% !important;
     margin-top: 1rem;
   }
+
+  .toggle-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .nav-controller.metrics-body {
+    .cds--side-nav--ux {
+      inline-size: 16rem !important;
+    }
+  }
 }
 
 @media only screen and (min-width: 1056px) and (max-width: 1450px)  {
   /* Styles for laptops and small desktops */
-  .tile-wrapper-one, .tile-wrapper-two {
-    display: flex;
-    width: 100%;
-  }
-
-  .tile-ug-coverage {
-    width: 50% !important;
-  }
-
   .section-wrapper {
     margin-left: unset !important;
   }
 
+  .nav-controller.metrics-body {
+    .cds--side-nav--ux {
+      inline-size: 16rem !important;
+    }
+  }
+
+  .toggle-menu-btn {
+    display: inline-flex !important;
+  }
+
   .cds--side-nav--ux {
     inline-size: 0 !important;
-  }
-}
-
-@media only screen and (min-width: 1056px) {
-  /* Styles for laptops and small desktops */
-  .tile-wrapper-one, .tile-wrapper-two {
-    display: flex;
-    width: 100%;
-  }
-
-  .tile-ug-coverage {
-    width: 50% !important;
   }
 }
