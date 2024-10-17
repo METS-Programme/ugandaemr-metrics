@@ -22,6 +22,7 @@ import {
   facilityDetailsPlus
 } from "./functions";
 import ViewButton from "../../home/view-button";
+import MapComponent from "../../maps/map";
 
 const UgandaemrCoverage = (props) => {
   const [data, setData] = useState([]);
@@ -66,21 +67,24 @@ const UgandaemrCoverage = (props) => {
                     <tr>
                       <td className="td-text-align">% of sites:</td>
                       <td className="td-details-value">
-                        &nbsp;{((facilityDetailsPlus(data).count / 1700) * 100).toFixed(1)}% of 1700
+                        &nbsp;{((facilityDetailsPlus(data).count / 1700) * 100).toFixed(1)}%
+                        of 1700
 
                       </td>
                     </tr>
                     </tbody>
                   </table>
                 </div>
-                <div className="tile-item-coverage"> {facilityDetailsPlus(data).count}</div>
+                <div
+                  className="tile-item-coverage"> {facilityDetailsPlus(data).count}</div>
               </div>
             </div>
 
             <div className="tile-ug-coverage tile-margin-ug-coverage">
               <div className="tile-header">
                 <div className="tile-items-container">
-                  <div className="tile-icon"><GroupPresentation size={50}/></div>
+                  <div className="tile-icon"><GroupPresentation size={50}/>
+                  </div>
                   <div className="header-text-color">POC Vs RDE</div>
                 </div>
               </div>
@@ -119,7 +123,8 @@ const UgandaemrCoverage = (props) => {
             <div className="tile-ug-coverage tile-margin-ug-coverage">
               <div className="tile-header">
                 <div className="tile-items-container">
-                  <div className="tile-icon"><CloudServiceManagement size={50}/></div>
+                  <div className="tile-icon"><CloudServiceManagement size={50}/>
+                  </div>
                   <div className="header-text-color">Mechanism</div>
                 </div>
               </div>
@@ -185,7 +190,6 @@ const UgandaemrCoverage = (props) => {
             </div>
           </div>
         </div>
-
         <div className="tile-container">
           <div className="tile tile-margin">
             <div className="tile-header">
@@ -208,7 +212,7 @@ const UgandaemrCoverage = (props) => {
           </div>
 
           <div className="tile tile-margin">
-          <div className="tile-header">
+            <div className="tile-header">
               <div className="tile-items-container">
                 <PieChart options={pieChartLevelsRDEPOCOptions}
                           data={coverageByLevel(data)?.pieData}/>
@@ -216,7 +220,17 @@ const UgandaemrCoverage = (props) => {
             </div>
           </div>
         </div>
-
+        <div className="item-chart-container">
+          <div className="item-chart">
+            <div className="cds--cc--title">
+              <p className="title" role="heading" aria-level="2">
+                UgandaEMR+ Facilities across the country as of
+                ({dayjs(new Date()).format("DD/MMM/YYYY")})
+              </p>
+            </div>
+            <MapComponent facilityArray={facilityDetailsPlus(data).facility}/>
+          </div>
+        </div>
         <div className="tile-container">
           <div className="tile-coverage tile-margin">
             <StackedBarChart options={stackedChartByCDCPartners}
