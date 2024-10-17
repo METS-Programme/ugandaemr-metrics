@@ -88,6 +88,25 @@ code {
     width: unset;
   }
 
+  .switcher-date-container {
+    justify-content: unset !important;
+  }
+
+  .metrics-date-picker {
+    .cds--date-picker {
+      display: unset;
+    }
+
+    .update-transaction {
+      height: 3rem;
+      margin-top: 2rem;
+      margin-left: 1rem;
+    }
+
+    .cds--date-picker-container {
+      margin-bottom: 1rem;
+    }
+  }
 
 }
 
@@ -131,6 +150,10 @@ code {
       inline-size: 16rem !important;
     }
   }
+
+  .switcher-date-container {
+    justify-content: unset !important;
+  }
 }
 
 @media only screen and (min-width: 1056px) and (max-width: 1450px)  {
@@ -151,5 +174,9 @@ code {
 
   .cds--side-nav--ux {
     inline-size: 0 !important;
+  }
+
+  .switcher-date-container {
+    justify-content: unset !important;
   }
 }
