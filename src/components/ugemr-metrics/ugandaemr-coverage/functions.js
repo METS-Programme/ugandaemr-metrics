@@ -13,6 +13,8 @@ export const facilityDetailsPlus = (data) => {
       agency: record?.agency,
       functionality: record?.poc_active === 1 ? "POC" : "Retrospective",
       active: record?.off_last_3_days === 0 ? "Yes" : "No",
+      long: record?.long,
+      lat: record?.lat
     });
 
     count += 1;

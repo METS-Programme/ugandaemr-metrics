@@ -11,3 +11,172 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header-label {
+  .cds--btn--tertiary {
+    margin-top: -1rem !important;
+    border-color: #009d9a !important;
+    color: #009d9a !important;
+    border-style: unset !important;
+    border-width: unset !important;
+  }
+
+  .cds--btn--tertiary:focus,  .cds--btn--tertiary:hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+
+.toggle-menu-btn {
+  display: none !important;
+}
+
+.tile-wrapper-one, .tile-wrapper-two {
+  display: flex;
+  width: 100%;
+}
+
+.tile-ug-coverage {
+  width: 50% !important;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Styles for small mobile screens */
+  .section-wrapper {
+    margin-left: unset !important;
+  }
+
+  .tile-container-ug-coverage {
+    display: block !important;
+  }
+
+  .tile-margin-ug-coverage, .tile-margin {
+    margin-right: unset!important;
+  }
+
+  .tile-ug-coverage, .tile, .tile-coverage {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+
+  .tile-container {
+    padding-top: unset !important;
+    display: block !important;
+  }
+
+  .item-chart-container {
+    padding-top: unset !important;
+  }
+
+  .toggle-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .nav-controller.metrics-body {
+    .cds--side-nav--ux {
+      inline-size: 16rem !important;
+    }
+
+    nav.hidden {
+      display: inline-flex;
+    }
+  }
+
+  .tile-wrapper-one, .tile-wrapper-two {
+    display: unset;
+    width: unset;
+  }
+
+  .switcher-date-container {
+    justify-content: unset !important;
+  }
+
+  .metrics-date-picker {
+    .cds--date-picker {
+      display: unset;
+    }
+
+    .update-transaction {
+      height: 3rem;
+      margin-top: 2rem;
+      margin-left: 1rem;
+    }
+
+    .cds--date-picker-container {
+      margin-bottom: 1rem;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1055px) {
+  /* Styles for tablets in portrait */
+  .section-wrapper {
+    margin-left: unset !important;
+  }
+
+  .tile-ug-coverage {
+    width: 50% !important;
+  }
+
+  .tile-container-ug-coverage {
+    display: unset !important;
+  }
+
+  .tile-wrapper-one, .tile-wrapper-two {
+    display: flex;
+  }
+
+  .tile-wrapper-one {
+    margin-bottom: 1rem;
+  }
+
+  .tile-container {
+    display: unset !important;
+  }
+
+  .tile, .tile-coverage {
+    width: 98% !important;
+    margin-top: 1rem;
+  }
+
+  .toggle-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .nav-controller.metrics-body {
+    .cds--side-nav--ux {
+      inline-size: 16rem !important;
+    }
+  }
+
+  .switcher-date-container {
+    justify-content: unset !important;
+  }
+}
+
+@media only screen and (min-width: 1056px) and (max-width: 1450px)  {
+  /* Styles for laptops and small desktops */
+  .section-wrapper {
+    margin-left: unset !important;
+  }
+
+  .nav-controller.metrics-body {
+    .cds--side-nav--ux {
+      inline-size: 16rem !important;
+    }
+  }
+
+  .toggle-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .cds--side-nav--ux {
+    inline-size: 0 !important;
+  }
+
+  .switcher-date-container {
+    justify-content: unset !important;
+  }
+}
