@@ -29,7 +29,7 @@ const UgandaemrCoverage = (props) => {
   const fetchData = async () => {
     const date = dayjs(new Date()).format("YYYY-MM-DD")
     try {
-      const response = await fetch(`https://ugisl.mets.or.ug/stats?and=(emrversion.eq.4.0.0-SNAPSHOT)`);
+      const response = await fetch(`https://ugisl.mets.or.ug/stats?and=(emrversion.in.("4.0.2","4.0.0-SNAPSHOT"))`);
       if (!response.ok) {
         console.error('Network response was not ok');
       }
@@ -62,7 +62,7 @@ const UgandaemrCoverage = (props) => {
                     <tr>
                       <td className="td-text-align">Version:</td>
                       <td
-                        className="td-details-value"> &nbsp; {'4.0.0-SNAPSHOT'}</td>
+                        className="td-details-value"> &nbsp; {'4.0.2'}</td>
                     </tr>
                     <tr>
                       <td className="td-text-align">% of sites:</td>

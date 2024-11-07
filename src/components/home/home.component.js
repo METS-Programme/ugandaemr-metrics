@@ -21,6 +21,7 @@ import {
 import CoverageComponent from "../nav-Items/coverage";
 import PocComponent from "../nav-Items/poc";
 import EmptyStateComponent from "../empty-state/empty-state";
+import HIEComponent from "../nav-Items/hie";
 
 const HomeComponent = () => {
   const [switchName, setSwitchName] = useState("ugandaemr");
@@ -77,7 +78,7 @@ const HomeComponent = () => {
 
             <SideNavLink className="disabled-link" renderIcon={Events} large onClick={() =>handleOnClickItem("performance")}> Performance </SideNavLink>
 
-            <SideNavLink className="disabled-link" renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> HIE
+            <SideNavLink renderIcon={DataShare} large onClick={() => handleOnClickItem("exchange")}> HIE
               Metrics </SideNavLink>
           </SideNavItems>
         </SideNav>
@@ -85,7 +86,7 @@ const HomeComponent = () => {
           {navItem === "coverage" && (<CoverageComponent emr={switchName}/>)}
           {navItem === "poc" && (<PocComponent emr={switchName}/>)}
           {navItem === "performance" && (<EmptyStateComponent />)}
-          {navItem === "exchange" && (<EmptyStateComponent />)}
+          {navItem === "exchange" && (<HIEComponent emr={switchName} />)}
         </section>
       </Content>
     </>
