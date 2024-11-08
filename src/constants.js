@@ -245,7 +245,7 @@ export function getProfiles() {
       uuid: "6aab2c93-0517-4aa0-82e8-dec9065f3f26", // Generated to uniquely identify the profile
       name: "VIRAL LOAD",
       type: "fhirProfile",
-      icon: <LoadBalancerPool size={25} />,
+      icon: <LoadBalancerPool size={35} />,
       className: "first-carousel-item",
       hieName: ["VL_PROGRAM_SEND","VL_REQUEST","VL_SEND"],
       incoming: {
@@ -267,7 +267,7 @@ export function getProfiles() {
       uuid: "7c65ca72-343e-4e7b-9fd7-aa1d4d72bb0a", // Generated to uniquely identify the profile
       name: "ART ACCESS",
       type: "fhirProfile",
-      icon: <GroupAccess size={25} />,
+      icon: <GroupAccess size={35} />,
       hieName: ["CRPDDP_SEND"],
       incoming: {
         url: "4c4e9551-d9d6-4882-93bd-e61a42e2f755",
@@ -288,7 +288,7 @@ export function getProfiles() {
       uuid: "3e2de79f-1145-44db-ac4b-bcfb630f429a",
       name: "MORTALITY",
       type: "fhirProfile",
-      icon: <Product size={25} />,
+      icon: <Product size={35} />,
       hieName: ["MORTALITY"],
       incoming: {
         url: "5426f5e3-4232-43e8-b10f-07b7093927b8-PR",
@@ -309,7 +309,7 @@ export function getProfiles() {
       uuid: "3eec4bbc-702e-4669-9edb-412194021c44",
       name: "CBS",
       type: "fhirProfile",
-      icon: <Rss size={25} />,
+      icon: <Rss size={35} />,
       hieName: ["CBS"],
       className: "fourth-carousel-item",
       incoming: {
@@ -331,7 +331,7 @@ export function getProfiles() {
       uuid: "cdec473b-90e0-4155-8b9d-677016f39dac",
       name: "PIRS",
       type: "fhirProfile",
-      icon: <LogicalPartition size={25} />,
+      icon: <LogicalPartition size={35} />,
       hieName: [""],
       className: "fifth-carousel-item",
       incoming: {
@@ -353,7 +353,7 @@ export function getProfiles() {
       uuid: "47bb67f3-9acc-4e86-8400-b2a7b681f5f3",
       name: "eHMIS",
       type: "fhirProfile",
-      icon: <DataCenter size={25} />,
+      icon: <DataCenter size={35} />,
       hieName: ["eHMIS"],
       incoming: {
         url: "8098d7ee-47a5-4f49-9540-c3d2c81a0bfe",
@@ -374,7 +374,7 @@ export function getProfiles() {
       uuid: "dab00e39-9ac4-483e-b57e-421033293ebd",
       name: "eCBSS",
       type: "fhirProfile",
-      icon: <IbmMq size={25} />,
+      icon: <IbmMq size={35} />,
       hieName: ["eCBSS"],
       incoming: {
         url: "9e358825-ae42-4837-9d8f-0fc77c3e6598",
@@ -395,7 +395,7 @@ export function getProfiles() {
       uuid: "acfe0df4-8c9c-44af-8b3b-f80b960eb7c8",
       name: "RECENCY",
       type: "syncTask",
-      icon: <Chat size={25} />,
+      icon: <Chat size={35} />,
       hieName: ["RECENCY"],
       incoming: {
         url: "eaee46e4-5cd1-49ce-85c2-a950781dc050",

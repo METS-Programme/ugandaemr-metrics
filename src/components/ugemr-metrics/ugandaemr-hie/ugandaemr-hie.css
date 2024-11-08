@@ -47,6 +47,10 @@
   .selected {
     background-color: #e0e0e0;
   }
+
+  svg {
+    color: #009d9a;
+  }
 }
 
 .first-carousel-item {
