@@ -18,11 +18,11 @@ export const ProfileCard = ({ profile, onClickHandler, selectedClass }) => {
           </div>
           <div className="">
             <div className="first-item">
-              <div>{profile?.incoming?.total}</div>
+              {/*<div>{profile?.incoming?.total}</div>*/}
               <ArrowDown size={15} className="in-coming-arrow" />
             </div>
             <div className="second-item">
-              <div>{profile?.outgoing?.total}</div>
+              {/*<div>{profile?.outgoing?.total}</div>*/}
               <ArrowUp size={15} className="out-going-arrow" />
             </div>
           </div>
