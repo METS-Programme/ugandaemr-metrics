@@ -10,8 +10,11 @@ import {
 } from "@carbon/react/icons"
 import "@carbon/charts/styles.css";
 import { DataTableComponent } from "../../data-table/data-table.component";
-import ViewButton from "../../home/view-button";
-import {exchangeHeaders, fourXheaders, getProfiles} from "../../../constants";
+import {
+  allHIEExchange,
+  exchangeHeaders,
+  getProfiles
+} from "../../../constants";
 import dayjs from "dayjs";
 import { DateFilterInput } from "../../date-picker/date-picker"
 import {ProfileCard} from "../../hie-helper-components/profile-card";
@@ -43,7 +46,7 @@ const UgandaemrHIE = (props) => {
       if(selectedProfile) {
         url = `https://ugisl.mets.or.ug/hie_stats?and=(post_date.gte.${from},post_date.lte.${to},hie.in.(${ '"' + selectedProfile?.hieName?.join('","') + '"'}))`
       } else {
-        url = `https://ugisl.mets.or.ug/hie_stats?and=(post_date.gte.${from},post_date.lte.${to})`;
+        url = `https://ugisl.mets.or.ug/hie_stats?and=(post_date.gte.${from},post_date.lte.${to},hie.in.(${ '"' + allHIEExchange?.join('","') + '"'}))`;
       }
       const response = await fetch(url);
       if (!response.ok) {

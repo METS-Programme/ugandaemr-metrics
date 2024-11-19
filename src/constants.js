@@ -263,27 +263,7 @@ export function getProfiles() {
         type: "syncTask",
       },
     },
-    {
-      uuid: "7c65ca72-343e-4e7b-9fd7-aa1d4d72bb0a", // Generated to uniquely identify the profile
-      name: "ART ACCESS",
-      type: "fhirProfile",
-      icon: <GroupAccess size={35} />,
-      hieName: ["CRPDDP_SEND"],
-      incoming: {
-        url: "4c4e9551-d9d6-4882-93bd-e61a42e2f755",
-        total: 0,
-        success: 0,
-        failure: 0,
-        type: "syncTask",
-      },
-      outgoing: {
-        url: "0a7fff77-6ac7-416c-831e-4e3f1f2c853b",
-        total: 0,
-        success: 0,
-        failure: 0,
-        type: "fhirProfile",
-      },
-    },
+
     {
       uuid: "3e2de79f-1145-44db-ac4b-bcfb630f429a",
       name: "MORTALITY",
@@ -311,7 +291,6 @@ export function getProfiles() {
       type: "fhirProfile",
       icon: <Rss size={35} />,
       hieName: ["CBS"],
-      className: "fourth-carousel-item",
       incoming: {
         url: "a3b6a8e2-6369-4bdc-b67f-fa7855f062b2",
         total: 0,
@@ -328,12 +307,55 @@ export function getProfiles() {
       },
     },
     {
+      uuid: "acfe0df4-8c9c-44af-8b3b-f80b960eb7c8",
+      name: "RECENCY",
+      type: "syncTask",
+      icon: <Chat size={35} />,
+      hieName: ["RECENCY"],
+      className: "fourth-carousel-item",
+      incoming: {
+        url: "eaee46e4-5cd1-49ce-85c2-a950781dc050",
+        total: 0,
+        success: 0,
+        failure: 0,
+        type: "fhirProfile",
+      },
+      outgoing: {
+        url: "08c5be38-1b79-4e27-b9ca-5da709aef5fe",
+        total: 0,
+        success: 0,
+        failure: 0,
+        type: "syncTask",
+      },
+    },
+    {
+      uuid: "7c65ca72-343e-4e7b-9fd7-aa1d4d72bb0a", // Generated to uniquely identify the profile
+      name: "ART ACCESS",
+      type: "fhirProfile",
+      icon: <GroupAccess size={35} />,
+      hieName: ["CRPDDP_SEND"],
+      className: "fifth-carousel-item",
+      incoming: {
+        url: "4c4e9551-d9d6-4882-93bd-e61a42e2f755",
+        total: 0,
+        success: 0,
+        failure: 0,
+        type: "syncTask",
+      },
+      outgoing: {
+        url: "0a7fff77-6ac7-416c-831e-4e3f1f2c853b",
+        total: 0,
+        success: 0,
+        failure: 0,
+        type: "fhirProfile",
+      },
+    },
+    {
       uuid: "cdec473b-90e0-4155-8b9d-677016f39dac",
       name: "PIRS",
       type: "fhirProfile",
       icon: <LogicalPartition size={35} />,
       hieName: [""],
-      className: "fifth-carousel-item",
       incoming: {
         url: "e5e41e4c-fb2d-4b9a-8e70-5f6ee85ae304",
         total: 0,
@@ -391,27 +413,6 @@ export function getProfiles() {
         type: "fhirProfile",
       },
     },
-    {
-      uuid: "acfe0df4-8c9c-44af-8b3b-f80b960eb7c8",
-      name: "RECENCY",
-      type: "syncTask",
-      icon: <Chat size={35} />,
-      hieName: ["RECENCY"],
-      incoming: {
-        url: "eaee46e4-5cd1-49ce-85c2-a950781dc050",
-        total: 0,
-        success: 0,
-        failure: 0,
-        type: "fhirProfile",
-      },
-      outgoing: {
-        url: "08c5be38-1b79-4e27-b9ca-5da709aef5fe",
-        total: 0,
-        success: 0,
-        failure: 0,
-        type: "syncTask",
-      },
-    }
   ];
 
   let maxIndex;
@@ -430,3 +431,5 @@ export function getProfiles() {
     maxPosition: maxIndex,
   };
 }
+
+export const allHIEExchange = ["VL_PROGRAM_SEND","VL_REQUEST","VL_SEND","CRPDDP_SEND","MORTALITY","CBS","eHMIS","eCBSS","RECENCY"];
