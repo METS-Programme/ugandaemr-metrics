@@ -287,7 +287,7 @@ export function getProfiles() {
     },
     {
       uuid: "3eec4bbc-702e-4669-9edb-412194021c44",
-      name: "CBS",
+      name: "DATA REPLICATION",
       type: "fhirProfile",
       icon: <Rss size={35} />,
       hieName: ["CBS"],

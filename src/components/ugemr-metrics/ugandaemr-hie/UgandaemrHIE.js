@@ -69,7 +69,7 @@ const UgandaemrHIE = (props) => {
         no: `${index++}`,
         facility_id: uniqueFacility?.fuid,
         facility: uniqueFacility?.facilityname,
-        hie: uniqueFacility?.hie,
+        hie: uniqueFacility?.hie === "CBS" ? "DATA REPLICATION" :uniqueFacility?.hie,
         records: uniqueFacility?.posts,
         date: uniqueFacility?.post_date
       })
