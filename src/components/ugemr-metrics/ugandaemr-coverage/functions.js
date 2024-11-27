@@ -1,7 +1,8 @@
 export const facilityDetailsPlus = (data) => {
   const facility = [];
   let count = 0;
-  data?.forEach((record, index) => {
+  const uniqueFacilities = uniqueFacilityByUUID(data);
+  uniqueFacilities?.forEach((record, index) => {
     facility.push({
       id: `${index++}`,
       no: `${index++}`,
