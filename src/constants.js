@@ -217,24 +217,84 @@ export const exchangeHeaders = [
     header: 'No',
   },
   {
-    key: 'facility_id',
-    header: 'Facility ID',
+    key: 'created',
+    header: 'DATE',
   },
   {
-    key: 'facility',
-    header: 'Facility Name',
+    key: 'tx_curr',
+    header: 'TX_CURR',
   },
   {
-    key: 'hie',
-    header: 'HIE Exchange',
+    key: 'region',
+    header: 'REGION',
   },
   {
-    key: 'records',
-    header: 'Transactions',
+    key: 'agency',
+    header: 'AGENCY',
   },
   {
-    key: 'date',
-    header: 'Date Posted',
+    key: 'fname',
+    header: 'FACILITY NAME',
+  },
+  {
+    key: 'mechanism',
+    header: 'MECHANISM',
+  },
+  {
+    key: 'is_hvol',
+    header: 'HIGH VOLUME',
+  },
+  {
+    key: 'hie_vl_program',
+    header: 'VL',
+  },
+  {
+    key: 'hie_cbs',
+    header: 'DATA REPLICATION',
+  },
+  {
+    key: 'hie_mortality',
+    header: 'MORTALITY',
+  },
+  {
+    key: 'hie_recency',
+    header: 'RECENCY',
+  },
+  {
+    key: 'hie_pirs',
+    header: 'PIRS',
+  },
+  {
+    key: 'hie_mpox',
+    header: 'MPOX',
+  },
+  {
+    key: 'emr_poc',
+    header: 'EMR PoC',
+  },
+  {
+    key: 'hie_ehmis',
+    header: 'eHMIS',
+  },
+  {
+    key: 'hie_art_access',
+    header: 'ART ACCESS',
+  },
+  {
+    key: 'his_emr_modules',
+    header: 'HIS_EMR_MODULES',
+  },
+  {
+    key: 'his_poc_data',
+    header: 'HIS_POC_DATA',
+  },
+  {
+    key: 'his_internet',
+    header: 'HIS_INTERNET',
+  },
+  {
+    key: 'his_hmis_emr',
+    header: 'HIS_HMIS_EMR',
   }
 ];
 

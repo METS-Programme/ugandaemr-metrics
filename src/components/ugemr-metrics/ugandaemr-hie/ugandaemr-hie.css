@@ -64,3 +64,8 @@
 .fifth-carousel-item {
   margin-left: 2.3rem;
 }
+
+.hie-header-container {
+  display: flex;
+  justify-content: space-between;
+}

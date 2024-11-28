@@ -18,7 +18,7 @@ import {
 import dayjs from "dayjs";
 import { DateFilterInput } from "../../date-picker/date-picker"
 import {ProfileCard} from "../../hie-helper-components/profile-card";
-import {Button} from "@carbon/react";
+import {Button, Toggle} from "@carbon/react";
 import "./ugandaemr-hie.css";
 
 const UgandaemrHIE = (props) => {
@@ -30,8 +30,13 @@ const UgandaemrHIE = (props) => {
   const [selectedProfile, setSelectedProfile] = useState(null)
   const [maxIndex] = useState(maxPosition);
   const [profiles, setProfiles] = useState(exchangeProfiles);
+  const [isReporting, setIsReporting] = useState(true);
   const handleOnChangeRange = (dates) => {
     setDateArray(dates);
+  };
+
+  const handleToggle = () => {
+    setIsReporting(!isReporting);
   };
 
   const updateDashboardMetrics = () => {
@@ -42,12 +47,7 @@ const UgandaemrHIE = (props) => {
     const from = dayjs(dateArray[0]).format("YYYY-MM-DD")
     const to = dayjs(dateArray[1]).format("YYYY-MM-DD")
     try {
-      let url;
-      if(selectedProfile) {
-        url = `https://ugisl.mets.or.ug/hie_stats?and=(post_date.gte.${from},post_date.lte.${to},hie.in.(${ '"' + selectedProfile?.hieName?.join('","') + '"'}))`
-      } else {
-        url = `https://ugisl.mets.or.ug/hie_stats?and=(post_date.gte.${from},post_date.lte.${to},hie.in.(${ '"' + allHIEExchange?.join('","') + '"'}))`;
-      }
+      let url = `https://ugisl.mets.or.ug/hie?or=(is_reporting.eq.0,and(created.gte.${from},created.lte.${to}))&order=is_reporting.desc,fname.asc,created.desc`;
       const response = await fetch(url);
       if (!response.ok) {
         console.error('Network response was not ok');
@@ -59,23 +59,48 @@ const UgandaemrHIE = (props) => {
     }
   };
 
-  const facilityDetailsPlus = () => {
+  const facilityDetailsPlus = (reportingIndicator) => {
     const facility = [];
     let count = 0;
-    data?.forEach((uniqueFacility, index) => {
+    let listOfFacilites = [];
+    reportingIndicator === 1 ?
+      listOfFacilites = data?.filter((item) => item?.is_reporting === reportingIndicator && item?.ugemr4x === reportingIndicator)
+      : listOfFacilites = data?.filter((item) => item?.is_reporting === reportingIndicator);
 
-      facility.push({
-        id: `${index++}`,
-        no: `${index++}`,
-        facility_id: uniqueFacility?.fuid,
-        facility: uniqueFacility?.facilityname,
-        hie: uniqueFacility?.hie === "CBS" ? "DATA REPLICATION" :uniqueFacility?.hie,
-        records: uniqueFacility?.posts,
-        date: uniqueFacility?.post_date
-      })
+    listOfFacilites?.forEach((facilityItem, index) => {
+      if (facilityItem?.is_reporting === reportingIndicator) {
+        facility.push({
+          id: `${index++}`,
+          no: `${index++}`,
+          created: facilityItem?.created,
+          fname: facilityItem?.fname,
+          tx_curr: `${facilityItem?.tx_curr}`,
+          region: facilityItem?.region,
+          agency: facilityItem?.agency,
+          mechanism: facilityItem?.mechanism,
+          hie_vl_program: (facilityItem?.hie_vl_program_send + facilityItem?.hie_vl_request + facilityItem?.hie_vl_send),
+          hie_cbs: facilityItem?.hie_mortality,
+          hie_mortality: facilityItem?.hie_mortality,
+          hie_recency: facilityItem?.hie_recency,
+          hie_pirs: facilityItem?.hie_pirs,
+          hie_mpox: facilityItem?.hie_mpox,
+          emr_poc: facilityItem?.emr_poc,
+          hie_ehmis: facilityItem?.hie_ehmis,
+          hie_art_access: facilityItem?.hie_art_access,
+          his_emr_modules: facilityItem?.his_emr_modules,
+          his_poc_data: facilityItem?.his_poc_data,
+          his_internet: facilityItem?.his_internet,
+          his_hmis_emr: facilityItem?.his_hmis_emr,
+          is_hvol: facilityItem?.is_hvol === 1 ? 'YES' : 'NO',
+          is_reporting: facilityItem?.is_reporting
+        })
+      }
     });
 
-    return { facility, count: data?.length };
+    return {
+      facilityList: facility,
+      count: listOfFacilites?.length
+    };
   }
 
   useEffect(() => {
@@ -161,19 +186,28 @@ const UgandaemrHIE = (props) => {
             </div>
           </div>
 
-
-
       <div className="item-chart-container">
         <div className="item-chart">
-          <div className="cds--cc--title">
+          <div className="cds--cc--title hie-header-container">
             <p className="title" role="heading" aria-level="2">
-              {selectedProfile?.name ?? "HIE"} Transactions
+             Health Information Exchange as Of
               ({dayjs(dateArray[0]).format("DD/MMM/YYYY")} - {dayjs(dateArray[1]).format("DD/MMM/YYYY")})
             </p>
+            <Toggle
+              aria-labelledby={`toggle-facilities`}
+              labelA={`Facilities Not Reporting`}
+              labelB={`Reporting Facilities`}
+              defaultToggled={true}
+              onToggle={handleToggle}
+            />
           </div>
-          <DataTableComponent rows={facilityDetailsPlus().facility}
-                              headers={exchangeHeaders} indicator={false}
-                              showDownload={false}/>
+          {
+            <DataTableComponent
+              rows={facilityDetailsPlus(isReporting ? 1 : 0)?.facilityList}
+              headers={exchangeHeaders} indicator={true}
+              showDownload={true}
+            />
+          }
         </div>
       </div>
     </>
