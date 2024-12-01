@@ -11,15 +11,13 @@
 }
 
 .profile-name {
-  padding-top: 3.5rem;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .first-item {
-  padding-bottom: 1.4rem;
+  padding-bottom: 1rem;
   display: flex;
-  padding-left: 11px;
 }
 
 .in-coming-arrow {
@@ -31,7 +29,16 @@
 }
 
 .second-item {
-  display: flex;
-  padding-left: 11px;
-  padding-top: 4rem;
+  padding-top: 3rem;
+  padding-left: 2rem;
+}
+
+.cumulative-text {
+  color: #b9b7b7;
+  font-size: 3em;
+  text-align: end;
+}
+
+.card-table-details {
+  padding: 3rem 0 0 0 ;
 }

@@ -23,11 +23,11 @@ import "./ugandaemr-hie.css";
 
 const UgandaemrHIE = (props) => {
   const [data, setData] = useState([]);
+  const [tileData, setTileData] = useState([]);
   const currentDate = new Date();
   const [dateArray, setDateArray] = useState([currentDate, currentDate]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { exchangeProfiles, maxPosition } = getProfiles();
-  const [selectedProfile, setSelectedProfile] = useState(null)
   const [maxIndex] = useState(maxPosition);
   const [profiles, setProfiles] = useState(exchangeProfiles);
   const [isReporting, setIsReporting] = useState(true);
@@ -41,6 +41,7 @@ const UgandaemrHIE = (props) => {
 
   const updateDashboardMetrics = () => {
     fetchData();
+    fetchTileData();
   };
 
   const fetchData = async () => {
@@ -58,6 +59,48 @@ const UgandaemrHIE = (props) => {
       console.error('Error fetching data:', error);
     }
   };
+
+  const fetchTileData = async () => {
+    const from = dayjs(dateArray[0]).format("YYYY-MM-DD")
+    const to = dayjs(dateArray[1]).format("YYYY-MM-DD")
+    try {
+      let url = `https://ugisl.mets.or.ug/get_hie_stats?start_date=${from}&end_date=${to}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        console.error('Network response was not ok');
+      }
+      const jsonData = await response.json();
+      setTileData(jsonData);
+    } catch (error) {
+      console.error('Error fetching data for Tiles:', error);
+    }
+  };
+
+
+  useEffect(() => {
+    if (tileData && tileData.length) {
+      const cum = tileData.filter((item) => item?.is_ugemr4x === 1 && item?.aggtype === 'CUM');
+      const highVol = cum.filter((item) => item?.is_hvol === 1)?.[0]?.total;
+      const lowVol = cum.filter((item) => item?.is_hvol === 0)?.[0]?.total;
+
+      const CUR = tileData.filter((item) => item?.is_ugemr4x === 1 && item?.aggtype === 'CUR');
+      const updatedProfiles = exchangeProfiles.map((profile) => {
+        if (profile.name === 'CUMULATIVE') {
+          profile.total = highVol + lowVol;
+          profile.highVol = highVol;
+          profile.lowVol = lowVol;
+        } else {
+          let count = 0;
+          CUR?.map((currentItem) => count += currentItem[profile.hieName]);
+          profile.total = count;
+        }
+        return profile;
+      });
+      setProfiles(updatedProfiles);
+      console.info(CUR);
+    }
+  }, [tileData]);
+
 
   const facilityDetailsPlus = (reportingIndicator) => {
     const facility = [];
@@ -105,7 +148,8 @@ const UgandaemrHIE = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, [selectedProfile]);
+    fetchTileData();
+  }, []);
 
   const moveRight = () => {
     let newIndex;
@@ -129,9 +173,6 @@ const UgandaemrHIE = (props) => {
     setCurrentIndex(newIndex);
   };
 
-  const handleSelectedProfile = (profile) => {
-    setSelectedProfile(profile);
-  }
   return (
     <>
 
@@ -175,10 +216,6 @@ const UgandaemrHIE = (props) => {
                   <div className={`carousel-item ${fhirProfile?.className ?? ""}`} key={index}>
                     <ProfileCard
                       profile={fhirProfile}
-                      onClickHandler={handleSelectedProfile}
-                      selectedClass={
-                        selectedProfile === fhirProfile ? "selected" : ""
-                      }
                     />
                   </div>
                 ))}
