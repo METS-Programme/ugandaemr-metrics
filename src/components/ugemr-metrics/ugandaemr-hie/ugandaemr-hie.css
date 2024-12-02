@@ -1,0 +1,71 @@
+.four-div-carousel {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.carousel-container {
+  overflow: hidden;
+
+  .cds--popover {
+    display: none;
+  }
+}
+
+.carousel-left-control {
+  position: absolute;
+  z-index: 2;
+  margin-top: 3.5rem;
+  margin-left: -0.7rem;
+}
+
+.carousel-right-control-div {
+  float: right;
+}
+
+.carousel-right-control {
+  position: absolute;
+  margin-left: -2.3rem;
+  margin-top: 3.5rem;
+  z-index: 2
+}
+
+.carousel-content {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item {
+  width: 24%;
+  flex-shrink: 0;
+  padding: 0 0 0 1rem;
+
+  .cds--tile--clickable:hover {
+    background-color: #f4f4f4;
+  }
+
+  .selected {
+    background-color: #e0e0e0;
+  }
+
+  svg {
+    color: #009d9a;
+  }
+}
+
+.first-carousel-item {
+  margin-left: 1rem;
+}
+
+.fourth-carousel-item {
+  margin-right: 1rem;
+}
+
+.fifth-carousel-item {
+  margin-left: 2.3rem;
+}
+
+.hie-header-container {
+  display: flex;
+  justify-content: space-between;
+}

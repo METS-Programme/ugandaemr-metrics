@@ -122,9 +122,6 @@ const UgandaemrPOC = (props) => {
       })
     });
 
-
-    console.info(facility);
-
     return { facility, count: uniqueFacilities?.length };
   }
 

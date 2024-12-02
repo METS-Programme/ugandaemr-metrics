@@ -1,0 +1,44 @@
+
+.card-tile {
+  border-radius: 1rem;
+  border: .0625rem solid #b5b5b5e3;
+  background-color: #ffff;
+}
+
+.card-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.first-item {
+  padding-bottom: 1rem;
+  display: flex;
+}
+
+.in-coming-arrow {
+  color: #0f62fe;
+}
+
+.out-going-arrow {
+  color: #009d9a;
+}
+
+.second-item {
+  padding-top: 3rem;
+  padding-left: 2rem;
+}
+
+.cumulative-text {
+  color: #b9b7b7;
+  font-size: 3em;
+  text-align: end;
+}
+
+.card-table-details {
+  padding: 3rem 0 0 0 ;
+}
