@@ -29,12 +29,13 @@ const UgandaemrCoverage = (props) => {
   const fetchData = async () => {
     const date = dayjs(new Date()).format("YYYY-MM-DD")
     try {
-      const response = await fetch(`https://ugisl.mets.or.ug/stats?emrversion=like.4*`);
+      const response = await fetch(`https://ugisl.mets.or.ug/stats`);
       if (!response.ok) {
         console.error('Network response was not ok');
       }
       const jsonData = await response.json();
-      setData(jsonData);
+      const ugandaEMRPLusFacilites = jsonData?.filter((facilty) => facilty?.emrversion?.startsWith("4"));
+      setData(ugandaEMRPLusFacilites);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

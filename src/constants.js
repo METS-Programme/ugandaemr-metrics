@@ -89,6 +89,10 @@ export const facilityHeaders = [
     header: 'Facility Name',
   },
   {
+    key: 'version',
+    header: 'EMR Version',
+  },
+  {
     key: 'level',
     header: 'Level',
   },
@@ -109,9 +113,13 @@ export const facilityHeaders = [
     header: '(POC / RDE)',
   },
   {
+    key: 'date',
+    header: 'Last Updated',
+  },
+  {
     key: 'active',
     header: 'Active (Past 3 days)',
-  },
+  }
 ];
 
 export const donutEMRCoverageOptions = {
