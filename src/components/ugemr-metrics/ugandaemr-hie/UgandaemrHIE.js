@@ -122,7 +122,7 @@ const UgandaemrHIE = (props) => {
           agency: facilityItem?.agency,
           mechanism: facilityItem?.mechanism,
           hie_vl_program: (facilityItem?.hie_vl_program_send + facilityItem?.hie_vl_request + facilityItem?.hie_vl_send),
-          hie_cbs: facilityItem?.hie_mortality,
+          hie_cbs: facilityItem?.hie_cbs,
           hie_mortality: facilityItem?.hie_mortality,
           hie_recency: facilityItem?.hie_recency,
           hie_pirs: facilityItem?.hie_pirs,

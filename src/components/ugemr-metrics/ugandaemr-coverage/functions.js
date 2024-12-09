@@ -8,6 +8,7 @@ export const facilityDetailsPlus = (data) => {
       no: `${index++}`,
       facility_id: record?.sourceid,
       facility: record?.facilityname,
+      version:record?.emrversion,
       level: record?.sourceid === "aUoqX6lBNFA" ? "HC II" : record?.ftype,
       district: record?.sourceid === "aUoqX6lBNFA" ? "Kampala District" : record?.district,
       ip: record?.ip,
@@ -15,7 +16,8 @@ export const facilityDetailsPlus = (data) => {
       functionality: record?.poc_active === 1 ? "POC" : "Retrospective",
       active: record?.off_last_3_days === 0 ? "Yes" : "No",
       long: record?.long,
-      lat: record?.lat
+      lat: record?.lat,
+      date: record?.created,
     });
 
     count += 1;
